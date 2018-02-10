@@ -16,6 +16,7 @@
     "chalk": "^2.3.0",
     "cli-table2": "^0.2.0",
     "contentful": "^5.1.0",
+    "normalize.css": "^8.0.0",
     "nuxt": "^1.0.0"
   },
   "devDependencies": {
