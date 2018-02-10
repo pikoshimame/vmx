@@ -13,6 +13,9 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "chalk": "^2.3.0",
+    "cli-table2": "^0.2.0",
+    "contentful": "^5.1.0",
     "nuxt": "^1.0.0"
   },
   "devDependencies": {
