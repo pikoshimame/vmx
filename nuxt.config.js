@@ -1,5 +1,3 @@
-const config = require('./.contentful.json');
-
 module.exports = {
   /*
   ** Headers of the page
@@ -52,9 +50,5 @@ module.exports = {
     vendor: ['~/plugins/contentful']
   },
   plugins: ['~/plugins/contentful'],
-  env: {
-    CTF_SPACE_ID: config.CTF_SPACE_ID,
-    CTF_CDA_ACCESS_TOKEN_DEV: config.CTF_CDA_ACCESS_TOKEN_DEV,
-    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN
-  }
+  modules: ['@nuxtjs/dotenv']
 }
