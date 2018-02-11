@@ -13,6 +13,10 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "chalk": "^2.3.0",
+    "cli-table2": "^0.2.0",
+    "contentful": "^5.1.0",
+    "normalize.css": "^8.0.0",
     "nuxt": "^1.0.0"
   },
   "devDependencies": {
@@ -21,6 +25,8 @@
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
-    "firebase-tools": "^3.17.4"
+    "firebase-tools": "^3.17.4",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6"
   }
 }

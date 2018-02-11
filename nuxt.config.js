@@ -1,18 +1,33 @@
+const config = require('./.contentful.json');
+
 module.exports = {
   /*
   ** Headers of the page
   */
   head: {
-    title: 'vmx',
+    htmlAttrs: {
+      lang: 'ja',
+    },
+    title: 'VOCALOID-ManiaX オフィシャルサイト',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { name: 'viewport', content: 'width=640, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
+      { property: 'og:title', content: 'VOCALOID-ManiaX オフィシャルサイト' },
+      { property: 'og:description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
+      { property: 'og:image', content: 'https://club-vmx.com/images/ico_logo.gif' },
+      { property: 'twitter:card', content: 'summary_large_image' },
+      { property: 'twitter:image:src', content: 'https://club-vmx.com/images/twitter_card_large.png' },
+      { property: 'twitter:description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Muli:200,200i,300i' }
     ]
   },
+  css: [
+    'normalize.css'
+  ],
   /*
   ** Customize the progress bar color
   */
@@ -33,6 +48,13 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    vendor: ['~/plugins/contentful']
+  },
+  plugins: ['~/plugins/contentful'],
+  env: {
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN_DEV: config.CTF_CDA_ACCESS_TOKEN_DEV,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN
   }
 }

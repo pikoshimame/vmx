@@ -1,52 +1,42 @@
 <template>
   <div>
+    <vmx-header/>
     <nuxt/>
+    <vmx-footer/>
   </div>
 </template>
 
-<style>
+<script>
+import VmxHeader from '../components/common/Header';
+import VmxFooter from '../components/common/Footer';
+
+export default {
+  components: {
+    VmxHeader,
+    VmxFooter
+  }
+}
+</script>
+
+<style lang="scss">
 html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+  color: #575757;
+  font-size: 10px;
+  min-width: 640px;
 }
-
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(left, hsl(1, 59%, 81%), #fff);
+  animation: 'background-animation' 10s linear 0s infinite alternate;
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+@keyframes background-animation {
+  @for $i from 1 through 100 {
+    #{$i}% { background: linear-gradient(left, hsl($i, 59%, 81%), #fff); }
+  }
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+@media (min-width: 641px) {
+  html {
+    min-width: 960px;
+  }
 }
 </style>
