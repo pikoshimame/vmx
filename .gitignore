@@ -10,5 +10,5 @@ npm-debug.log
 # Nuxt generate
 dist
 
-# Contentful configs
-.contentful.json
+# env
+.env
