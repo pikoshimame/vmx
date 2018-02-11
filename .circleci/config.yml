@@ -16,7 +16,9 @@ jobs:
 
       - run: yarn install
 
-      - run: touch .env
+      - run: echo CTF_SPACE_ID=$CTF_SPACE_ID >> .env
+
+      - run: echo CTF_CDA_ACCESS_TOKEN=$CTF_CDA_ACCESS_TOKEN >> .env
 
       - run: yarn generate
 
