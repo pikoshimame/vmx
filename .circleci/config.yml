@@ -3,9 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.9.4
-        environment:
-          CTF_SPACE_ID: "$CTF_SPACE_ID"
-          CTF_CDA_ACCESS_TOKEN: "$CTF_CDA_ACCESS_TOKEN"
 
     working_directory: ~/repo
 
@@ -18,6 +15,8 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
+
+      - run: touch .env
 
       - run: yarn generate
 
