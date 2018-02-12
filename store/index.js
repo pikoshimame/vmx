@@ -13,9 +13,9 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ commit }) {
-    const response = await client.getEntries({ content_type: 'copyright' });
-    response.items.forEach(entry => {
-      commit('setCopyright', entry.fields['copyright']);
-    });
+    const response = await client.getEntries({ content_type: 'copyright', order: '-fields.copyright' });
+    commit('setCopyright', response.items.map(entry => {
+      return entry.fields['copyright'];
+    })[0]);
   }
 };

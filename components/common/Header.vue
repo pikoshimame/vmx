@@ -125,12 +125,7 @@ export default {
   position: absolute;
   right: 34px;
   top: 33px;
-  background: none;
-  border: none;
-  cursor: pointer;
   width: 44px;
-  padding: 0;
-  outline: none;
 }
 .btn.is-hidden {
   display: none;
@@ -140,10 +135,9 @@ export default {
 }
 .text {
   display: block;
-  color: #000;
+  color: rgba(0, 0, 0, .72);
   font-size: 1.4rem;
-  margin-top: 8px;
-  opacity: 0.72;
+  padding-top: 8px;
 }
 .logo {
   position: absolute;
@@ -160,13 +154,11 @@ export default {
   position: absolute;
   right: 0;
   display: flex;
+  justify-content: space-between;
   font-size: 1.6rem;
   height: 60px;
   margin: 0;
   padding: 0;
-}
-.navi__item {
-  list-style: none;
 }
 .link {
   display: block;

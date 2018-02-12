@@ -7,14 +7,11 @@
 </template>
 
 <script>
-import VmxHeader from '../components/common/Header';
-import VmxFooter from '../components/common/Footer';
+import VmxHeader from '~/components/common/Header';
+import VmxFooter from '~/components/common/Footer';
 
 export default {
-  components: {
-    VmxHeader,
-    VmxFooter
-  }
+  components: { VmxHeader, VmxFooter }
 }
 </script>
 
@@ -38,5 +35,23 @@ body {
   html {
     min-width: 960px;
   }
+}
+h2, h3 {
+  color: #00a782;
+  font-family: 'Muli', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1em;
+  margin: 0;
+}
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+}
+li {
+  list-style: none;
 }
 </style>
