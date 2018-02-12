@@ -4,11 +4,12 @@
       <slot/>
       <ul class="guest">
         <li class="guest__item" v-for="guest in guests" :key="guest.displayOrder">
-          <button class="btn">
-            <div class="thumb"><img :src="guest.thumbnail.fields.file.url" :alt="guest.name"></div>
-            <div class="thumb thumb--on"><img :src="guest.thumbnail.fields.file.url" :alt="guest.name"></div>
-            <div class="name">{{ guest.name }}</div>
+          <button class="btn" @click="$modal.show(`modal-${guest.displayOrder}`)">
+            <div class="thumb"><img :src="guest.thumbnail.fields.file.url" :srcset="`${guest.thumbnail.fields.file.url} 1x, ${guest.thumbnail2x.fields.file.url} 2x`" :alt="guest.name"></div>
+            <div class="thumb thumb--on"><img :src="guest.thumbnail.fields.file.url" :srcset="`${guest.thumbnail.fields.file.url} 1x, ${guest.thumbnail2x.fields.file.url} 2x`" :alt="guest.name"></div>
+            <p class="name">{{ guest.name }}</p>
           </button>
+          <vmx-modal :guest="guest"/>
         </li>
       </ul>
     </section>
@@ -16,8 +17,11 @@
 </template>
 
 <script>
+import VmxModal from '~/components/index/Modal';
+
 export default {
-  props: ['guests']
+  props: ['guests'],
+  components: { VmxModal },
 }
 </script>
 

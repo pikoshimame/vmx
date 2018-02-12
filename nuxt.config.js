@@ -58,8 +58,8 @@ module.exports = {
         ]
       }
     },
-    vendor: ['~/plugins/contentful']
+    vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal']
   },
-  plugins: ['~/plugins/contentful'],
+  plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal'],
   modules: ['@nuxtjs/dotenv']
 }

@@ -25,8 +25,14 @@
   font-size: 1.2rem;
   text-align: left;
   line-height: 1.8rem;
-  width: 770px;
+  width: 570px;
   margin: auto;
+  box-sizing: border-box;
+}
+@media (min-width: 641px) {
+  .caution {
+    width: 810px;
+  }
 }
 .caution >>> li {
   list-style: decimal;

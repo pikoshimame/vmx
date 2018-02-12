@@ -54,4 +54,7 @@ button {
 li {
   list-style: none;
 }
+p {
+  margin: 0;
+}
 </style>
