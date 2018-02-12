@@ -64,14 +64,14 @@ export default {
     return {
       isHidden: true,
       scrollX: 0
-    }
+    };
   },
   methods: {
     click() {
       this.isHidden = false;
       setTimeout(() => {
         this.isHidden = true;
-      }, 5000)
+      }, 5000);
     },
     scroll() {
       this.scrollX = window.scrollX;
