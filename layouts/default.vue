@@ -51,6 +51,7 @@ h2, h3 {
 button {
   background: none;
   border: none;
+  color: #575757;
   padding: 0;
   outline: none;
   cursor: pointer;

@@ -1,20 +1,20 @@
 <template>
   <div>
-    <modal class="modal" :name="`${guest.modalKey}${guest.displayOrder}`" :width="600" :height="'auto'" :scrollable="true">
-      <button-close class="close" :name="`${guest.modalKey}${guest.displayOrder}`" />
+    <modal class="modal" :name="modalName" :width="600" :height="'auto'" :scrollable="true">
+      <button-close class="close" :name="modalName" />
       <p class="name" v-html="guest.name"/>
       <p class="credit" v-if="guest.credit" v-html="guest.credit"/>
       <p class="img" v-if="guest.image.fields && guest.image2x.fields"><img :src="guest.image.fields.file.url" :srcset="`${guest.image.fields.file.url} 1x, ${guest.image2x.fields.file.url} 2x`" :alt="guest.name"/></p>
       <p class="profile" v-html="guest.prifile"/>
       <ul class="links" v-if="guest.website || guest.soundcloud || guest.twitter">
-        <li class="links__item" v-if="guest.website">
-          <button-website :link="guest.website"/>
+        <li class="links__item" v-if="guest.twitter">
+          <button-twitter :link="guest.twitter"/>
         </li>
         <li class="links__item" v-if="guest.soundcloud">
           <button-soundcloud :link="guest.soundcloud"/>
         </li>
-        <li class="links__item" v-if="guest.twitter">
-          <button-twitter :link="guest.twitter"/>
+        <li class="links__item" v-if="guest.website">
+          <button-website :link="guest.website"/>
         </li>
       </ul>
     </modal>
@@ -28,7 +28,7 @@ import ButtonSoundcloud from '~/components/common/button/Soundcloud';
 import ButtonTwitter from '~/components/common/button/Twitter';
 
 export default {
-  props: ['guest'],
+  props: ['guest', 'modalName'],
   components: { ButtonClose, ButtonWebsite, ButtonSoundcloud, ButtonTwitter }
 }
 </script>

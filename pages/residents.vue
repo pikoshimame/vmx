@@ -3,22 +3,24 @@
     <main class="main">
       <section>
         <h2 class="titleMain">Residents</h2>
-        <section v-if="djs.length">
+        <vmx-resident v-if="djs.length" :residents="djs">
           <h3 class="titleSub">DJ</h3>
-        </section>
-        <section v-if="vjs.length">
+        </vmx-resident>
+        <vmx-resident v-if="vjs.length" :residents="vjs">
           <h3 class="titleSub">VJ</h3>
-        </section>
+        </vmx-resident>
       </section>
     </main>
   </div>
 </template>
 
 <script>
+import VmxResident from '~/components/residents/Resident';
 import contentful from '~/plugins/contentful';
 const client = contentful.createClient();
 
 export default {
+  components: { VmxResident },
   data() {
     return {
       djs: [],
