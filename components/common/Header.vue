@@ -50,9 +50,9 @@
           </router-link>
           <nav>
             <ul class="navi">
-              <li class="navi__item"><router-link class="link" to="about">About</router-link></li>
-              <li class="navi__item"><router-link class="link" to="residents">Residents</router-link></li>
-              <li class="navi__item"><router-link class="link" to="photo">Photo</router-link></li>
+              <li class="navi__item"><router-link class="link" to="/about">About</router-link></li>
+              <li class="navi__item"><router-link class="link" to="/residents">Residents</router-link></li>
+              <li class="navi__item"><router-link class="link" to="/photo">Photo</router-link></li>
             </ul>
           </nav>
         </div>
