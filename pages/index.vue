@@ -4,13 +4,13 @@
       <div class="inner">
         <vmx-logo/>
         <section>
-          <vmx-info :info="info">
+          <vmx-info v-if="info" :info="info">
             <h2 class="titleMain">Next</h2>
           </vmx-info>
           <vmx-guest v-if="guests.length" :guests="guests">
             <h3 class="titleSub">Guests</h3>
           </vmx-guest>
-          <vmx-door :link="info.link">
+          <vmx-door v-if="info" :link="info.link">
             <h3 class="titleSub">Door</h3>
           </vmx-door>
         </section>
