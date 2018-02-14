@@ -12,7 +12,7 @@
       </dl>
       <ul class="notes">
         <li>成年・未成年に限らず “必ず”身分証をお持ち下さい。</li>
-        <li>Twitter割引は<a class="link" :href="link" target="_blank">MOGRAページ</a>からツイートして当日受付でお見せ下さい。</li>
+        <li>Twitter割引は<a class="link" v-if="link" :href="link" target="_blank">MOGRAページ</a><span v-else>MOGRAページ</span>からツイートして当日受付でお見せ下さい。</li>
       </ul>
     </section>
   </div>
