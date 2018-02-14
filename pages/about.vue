@@ -35,7 +35,7 @@ export default {
 .main {
   width: 540px;
   margin: auto;
-  padding: 125px 0 120px;
+  padding: 125px 0 300px;
 }
 .title {
   font-size: 5.7rem;
