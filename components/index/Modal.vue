@@ -8,7 +8,7 @@
       </button>
       <p class="name" v-html="guest.name"/>
       <p class="credit" v-if="guest.credit" v-html="guest.credit"/>
-      <p class="img"><img :src="guest.image.fields.file.url" :srcset="`${guest.image.fields.file.url} 1x, ${guest.image2x.fields.file.url} 2x`" :alt="guest.name"/></p>
+      <p class="img" v-if="guest.image.fields && guest.image2x.fields"><img :src="guest.image.fields.file.url" :srcset="`${guest.image.fields.file.url} 1x, ${guest.image2x.fields.file.url} 2x`" :alt="guest.name"/></p>
       <p class="profile" v-html="guest.prifile"/>
       <ul class="links" v-if="guest.website || guest.soundcloud || guest.twitter">
         <li class="links__item links__item--website" v-if="guest.website">

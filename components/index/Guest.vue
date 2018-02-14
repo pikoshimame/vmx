@@ -5,8 +5,8 @@
       <ul class="guest">
         <li class="guest__item" v-for="guest in guests" :key="guest.displayOrder">
           <button class="btn" @click="$modal.show(`${guest.modalKey}${guest.displayOrder}`)">
-            <div class="thumb"><img :src="guest.thumbnail.fields.file.url" :srcset="`${guest.thumbnail.fields.file.url} 1x, ${guest.thumbnail2x.fields.file.url} 2x`" :alt="guest.name"></div>
-            <div class="thumb thumb--on"><img :src="guest.thumbnail.fields.file.url" :srcset="`${guest.thumbnail.fields.file.url} 1x, ${guest.thumbnail2x.fields.file.url} 2x`" :alt="guest.name"></div>
+            <div class="thumb" v-if="guest.thumbnail.fields && guest.thumbnail2x.fields"><img :src="guest.thumbnail.fields.file.url" :srcset="`${guest.thumbnail.fields.file.url} 1x, ${guest.thumbnail2x.fields.file.url} 2x`" :alt="guest.name"></div>
+            <div class="thumb thumb--on" v-if="guest.thumbnail.fields && guest.thumbnail2x.fields"><img :src="guest.thumbnail.fields.file.url" :srcset="`${guest.thumbnail.fields.file.url} 1x, ${guest.thumbnail2x.fields.file.url} 2x`" :alt="guest.name"></div>
             <p class="name">{{ guest.name }}</p>
           </button>
           <vmx-modal :guest="guest"/>
