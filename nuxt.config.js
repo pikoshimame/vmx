@@ -9,7 +9,7 @@ module.exports = {
     title: 'VOCALOID-ManiaX オフィシャルサイト',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=640, initial-scale=1' },
+      { name: 'viewport', content: 'width=640' },
       { hid: 'description', name: 'description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
       { property: 'og:title', content: 'VOCALOID-ManiaX オフィシャルサイト' },
       { property: 'og:description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
