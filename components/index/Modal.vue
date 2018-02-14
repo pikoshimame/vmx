@@ -4,7 +4,7 @@
       <button-close class="close" :name="modalName" />
       <p class="name" v-html="guest.name"/>
       <p class="credit" v-if="guest.credit" v-html="guest.credit"/>
-      <p class="img" v-if="guest.image.fields && guest.image2x.fields"><img :src="guest.image.fields.file.url" :srcset="`${guest.image.fields.file.url} 1x, ${guest.image2x.fields.file.url} 2x`" :alt="guest.name"/></p>
+      <p class="img" v-if="guest.image.fields"><img :src="getHalfSizeUrl(guest.image.fields.file)" :srcset="`${getHalfSizeUrl(guest.image.fields.file)} 1x, ${guest.image.fields.file.url} 2x`" :alt="guest.name"/></p>
       <p class="profile" v-html="guest.prifile"/>
       <ul class="links" v-if="guest.website || guest.soundcloud || guest.twitter">
         <li class="links__item" v-if="guest.twitter">
@@ -29,7 +29,12 @@ import ButtonTwitter from '~/components/common/button/Twitter';
 
 export default {
   props: ['guest', 'modalName'],
-  components: { ButtonClose, ButtonWebsite, ButtonSoundcloud, ButtonTwitter }
+  components: { ButtonClose, ButtonWebsite, ButtonSoundcloud, ButtonTwitter },
+  methods: {
+    getHalfSizeUrl(file) {
+      return `${file.url}?w=${file.details.image.width / 2}`;
+    }
+  }
 }
 </script>
 

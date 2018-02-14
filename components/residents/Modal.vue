@@ -4,7 +4,7 @@
       <button-close class="close" :name="modalName" />
       <div class="inner">
         <div class="inner__item inner__item--left">
-          <p class="img" v-if="resident.image.fields && resident.image2x.fields"><img :src="resident.image.fields.file.url" :srcset="`${resident.image.fields.file.url} 1x, ${resident.image2x.fields.file.url} 2x`" :alt="resident.name"/></p>
+          <p class="img" v-if="resident.image.fields"><img :src="getHalfSizeUrl(resident.image.fields.file)" :srcset="`${getHalfSizeUrl(resident.image.fields.file)} 1x, ${resident.image.fields.file.url} 2x`" :alt="resident.name"/></p>
         </div>
         <div class="inner__item">
           <p class="name" v-html="resident.name"/>
@@ -35,7 +35,12 @@ import ButtonTwitter from '~/components/common/button/Twitter';
 
 export default {
   props: ['resident', 'modalName'],
-  components: { ButtonClose, ButtonWebsite, ButtonSoundcloud, ButtonTwitter }
+  components: { ButtonClose, ButtonWebsite, ButtonSoundcloud, ButtonTwitter },
+  methods: {
+    getHalfSizeUrl(file) {
+      return `${file.url}?w=${file.details.image.width / 2}`;
+    }
+  }
 }
 </script>
 

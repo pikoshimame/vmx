@@ -3,13 +3,13 @@
     <section>
       <slot/>
       <ul class="residents">
-        <li class="residents__item" v-for="resident in residents" :key="resident.displayOrder">
-          <button class="btn" @click="$modal.show(`${modalKey}${resident.displayOrder}`)">
-            <span class="thumb" v-if="resident.thumbnail.fields && resident.thumbnail2x.fields"><img :src="resident.thumbnail.fields.file.url" :srcset="`${resident.thumbnail.fields.file.url} 1x, ${resident.thumbnail2x.fields.file.url} 2x`" :alt="resident.name"></span>
-            <span class="thumb thumb--on" v-if="resident.thumbnail.fields && resident.thumbnail2x.fields"><img :src="resident.thumbnail.fields.file.url" :srcset="`${resident.thumbnail.fields.file.url} 1x, ${resident.thumbnail2x.fields.file.url} 2x`" :alt="resident.name"></span>
+        <li class="residents__item" v-for="(resident, index) in residents" :key="resident.displayOrder">
+          <button class="btn" @click="$modal.show(`${modalKey}${index}`)">
+            <span class="thumb" v-if="resident.thumbnail.fields"><img :src="getHalfSizeUrl(resident.thumbnail.fields.file)" :srcset="`${getHalfSizeUrl(resident.thumbnail.fields.file)} 1x, ${resident.thumbnail.fields.file.url} 2x`" :alt="resident.name"/></span>
+            <span class="thumb thumb--on" v-if="resident.thumbnail.fields"><img :src="getHalfSizeUrl(resident.thumbnail.fields.file)" :srcset="`${getHalfSizeUrl(resident.thumbnail.fields.file)} 1x, ${resident.thumbnail.fields.file.url} 2x`" :alt="resident.name"/></span>
             <span class="name">{{ resident.name }}</span>
           </button>
-          <vmx-modal :resident="resident" :modalName="`${modalKey}${resident.displayOrder}`"/>
+          <vmx-modal :resident="resident" :modalName="`${modalKey}${index}`"/>
         </li>
       </ul>
     </section>
@@ -25,6 +25,11 @@ export default {
   data() {
     return {
       modalKey: 'resident-'
+    }
+  },
+  methods: {
+    getHalfSizeUrl(file) {
+      return `${file.url}?w=${file.details.image.width / 2}`;
     }
   }
 }
