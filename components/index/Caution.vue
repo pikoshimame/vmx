@@ -24,7 +24,7 @@
 .caution {
   font-size: 1.2rem;
   text-align: left;
-  line-height: 1.8rem;
+  line-height: 1.5em;
   width: 570px;
   margin: auto;
   box-sizing: border-box;

@@ -60,9 +60,11 @@ export default {
 .notes {
   font-size: 1.2rem;
   text-align: left;
-  line-height: 1.8rem;
-  width: 430px;
+  line-height: 1.5em;
+  width: 460px;
   margin: auto;
+  padding-left: 30px;
+  box-sizing: border-box;
 }
 .notes >>> li {
   text-indent: -1.5em;
