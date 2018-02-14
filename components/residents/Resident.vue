@@ -20,13 +20,8 @@
 import VmxModal from '~/components/residents/Modal';
 
 export default {
-  props: ['residents'],
+  props: ['residents', 'modalKey'],
   components: { VmxModal },
-  data() {
-    return {
-      modalKey: 'resident-'
-    }
-  },
   methods: {
     getHalfSizeUrl(file) {
       return `${file.url}?w=${file.details.image.width / 2}`;

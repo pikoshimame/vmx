@@ -3,10 +3,10 @@
     <main class="main">
       <section>
         <h2 class="titleMain">Residents</h2>
-        <vmx-resident v-if="djs.length" :residents="djs">
+        <vmx-resident v-if="djs.length" :residents="djs" :modalKey="'dj-'">
           <h3 class="titleSub">DJ</h3>
         </vmx-resident>
-        <vmx-resident v-if="vjs.length" :residents="vjs">
+        <vmx-resident v-if="vjs.length" :residents="vjs" :modalKey="'vj-'">
           <h3 class="titleSub">VJ</h3>
         </vmx-resident>
       </section>
