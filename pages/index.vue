@@ -16,7 +16,7 @@
         </section>
       </div>
       <vmx-caution/>
-      <vmx-twitter-btn :twitter="twitter"/>
+      <vmx-twitter-btn v-if="twitter" :twitter="twitter"/>
     </main>
   </div>
 </template>
