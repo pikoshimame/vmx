@@ -1,5 +1,3 @@
-const nodeExternals = require('webpack-node-externals');
-
 module.exports = {
   /*
   ** Headers of the page
@@ -11,7 +9,6 @@ module.exports = {
     title: 'VOCALOID-ManiaX オフィシャルサイト',
     meta: [
       { charset: 'utf-8' },
-      { 'http-equiv': 'content-language', content: 'ja' },
       { name: 'viewport', content: 'width=640, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
       { property: 'og:title', content: 'VOCALOID-ManiaX オフィシャルサイト' },
@@ -36,11 +33,16 @@ module.exports = {
   /*
   ** Build configuration
   */
+  generate: {
+    minify: {
+      removeScriptTypeAttributes: true
+    }
+  },
   build: {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient, isServer }) {
+    extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -48,15 +50,6 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
-      }
-      if (isServer) {
-        config.externals = [
-          nodeExternals({
-            // default value for `whitelist` is
-            // [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i]
-            whitelist: [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
-          })
-        ]
       }
     },
     vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal']

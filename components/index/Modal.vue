@@ -1,37 +1,20 @@
 <template>
   <div>
     <modal class="modal" :name="`${guest.modalKey}${guest.displayOrder}`" :width="600" :height="'auto'" :scrollable="true">
-      <button class="close" @click="$modal.hide(`${guest.modalKey}${guest.displayOrder}`)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23">
-          <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#575757" points="23,0.719 22.281,0 11.5,10.781 0.719,0 0,0.719 10.781,11.5 0,22.281 0.719,23 11.5,12.219 22.281,23 23,22.281 12.219,11.5"/>
-        </svg>
-      </button>
+      <button class="close" @click="$modal.hide(`${guest.modalKey}${guest.displayOrder}`)"><icon-close class="close__icon"/></button>
       <p class="name" v-html="guest.name"/>
       <p class="credit" v-if="guest.credit" v-html="guest.credit"/>
       <p class="img" v-if="guest.image.fields && guest.image2x.fields"><img :src="guest.image.fields.file.url" :srcset="`${guest.image.fields.file.url} 1x, ${guest.image2x.fields.file.url} 2x`" :alt="guest.name"/></p>
       <p class="profile" v-html="guest.prifile"/>
       <ul class="links" v-if="guest.website || guest.soundcloud || guest.twitter">
         <li class="links__item links__item--website" v-if="guest.website">
-          <a :href="guest.website" target="_blank">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 29">
-              <path fill-rule="evenodd" clip-rule="evenodd" fill="#D9D9D9" d="M35.133,0H0.866C0.388,0,0,0.387,0,0.865v27.269
-                C0,28.611,0.388,29,0.866,29h34.267C35.611,29,36,28.611,36,28.134V0.865C36,0.387,35.611,0,35.133,0z M15,3.246h17v1.189H15
-                V3.246z M10.685,3.104c0.479,0,0.868,0.387,0.868,0.866s-0.388,0.867-0.868,0.867c-0.479,0-0.868-0.388-0.868-0.867
-                S10.206,3.104,10.685,3.104z M7.506,3.101c0.479,0,0.867,0.387,0.867,0.865S7.985,4.831,7.506,4.831S6.64,4.444,6.64,3.966
-                S7.028,3.101,7.506,3.101z M4.617,3.103c0.475,0,0.86,0.385,0.86,0.859s-0.385,0.859-0.86,0.859s-0.86-0.385-0.86-0.859
-                S4.142,3.103,4.617,3.103z M33.978,26.98H2.021V6.994h31.956V26.98z"/>
-            </svg>
-          </a>
+          <a :href="guest.website" target="_blank"><icon-website class="icon icon--website"/></a>
         </li>
         <li class="links__item links__item--soundcloud" v-if="guest.soundcloud">
-          <a :href="guest.soundcloud" target="_blank">
-            <icon class="icon" name="soundcloud" width="39px" height="100%"/>
-          </a>
+          <a :href="guest.soundcloud" target="_blank"><icon-soundcloud class="icon icon--soundcloud"/></a>
         </li>
         <li class="links__item links__item--twitter" v-if="guest.twitter">
-          <a :href="guest.twitter" target="_blank">
-            <icon class="icon" name="twitter" width="36px" height="100%"/>
-          </a>
+          <a :href="guest.twitter" target="_blank"><icon-twitter class="icon icon--twitter"/></a>
         </li>
       </ul>
     </modal>
@@ -39,13 +22,14 @@
 </template>
 
 <script>
-import 'vue-awesome/icons/soundcloud';
-import 'vue-awesome/icons/twitter';
-import Icon from 'vue-awesome/components/Icon';
+import IconClose from '~/components/common/icon/Close';
+import IconWebsite from '~/components/common/icon/Website';
+import IconSoundcloud from '~/components/common/icon/Soundcloud';
+import IconTwitter from '~/components/common/icon/Twitter';
 
 export default {
   props: ['guest'],
-  components: { Icon }
+  components: { IconClose, IconWebsite, IconSoundcloud, IconTwitter }
 }
 </script>
 
@@ -67,8 +51,11 @@ export default {
   width: 23px;
   height: 23px;
 }
-.close >>> svg {
+.close__icon {
   display: block;
+  color: #575757;
+  width: 23px;
+  height: 23px;
 }
 .name {
   color: #00a782;
@@ -134,7 +121,15 @@ export default {
   color: #d9d9d9;
   margin: auto;
 }
-.links__item--website >>> .icon {
+.icon--website {
+  width: 36px;
+  height: 29px;
+}
+.icon--soundcloud {
+  width: 39px;
+  height: 17px;
+}
+.icon--twitter {
   width: 36px;
   height: 29px;
 }
