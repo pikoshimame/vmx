@@ -1,16 +1,15 @@
 <template>
   <div>
-    <a class="btn" :href="twitter" target="_blank"><icon class="icon" name="twitter" width="22px" height="100%"/>Latest information</a>
+    <a class="btn" :href="twitter" target="_blank"><icon-twitter class="icon"/>Latest information</a>
   </div>
 </template>
 
 <script>
-import 'vue-awesome/icons/twitter';
-import Icon from 'vue-awesome/components/Icon';
+import IconTwitter from '~/components/common/icon/Twitter';
 
 export default {
   props: ['twitter'],
-  components: { Icon }
+  components: { IconTwitter }
 }
 </script>
 
@@ -37,6 +36,9 @@ export default {
 }
 .icon {
   display: block;
+  color: #575757;
+  width: 22px;
+  height: 18px;
   padding-right: 10px;
 }
 </style>

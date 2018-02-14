@@ -23,7 +23,7 @@ html {
 }
 body {
   font-family: Hiragino Sans, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: linear-gradient(left, hsl(1, 59%, 81%), #fff);
+  background: linear-gradient(to right, hsl(1, 59%, 81%), #fff);
   animation: 'background-animation' 10s linear 0s infinite alternate;
 }
 body.v--modal-block-scroll {
@@ -32,7 +32,7 @@ body.v--modal-block-scroll {
 }
 @keyframes background-animation {
   @for $i from 1 through 100 {
-    #{$i}% { background: linear-gradient(left, hsl($i, 59%, 81%), #fff); }
+    #{$i}% { background: linear-gradient(to right, hsl($i, 59%, 81%), #fff); }
   }
 }
 @media (min-width: 641px) {
