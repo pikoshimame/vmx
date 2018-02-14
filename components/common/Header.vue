@@ -95,6 +95,7 @@ export default {
   font-weight: 200;
   width: 100%;
   min-width: 640px;
+  z-index: 1;
 }
 @media (min-width: 641px) {
   .header {
