@@ -11,6 +11,7 @@ module.exports = {
     title: 'VOCALOID-ManiaX オフィシャルサイト',
     meta: [
       { charset: 'utf-8' },
+      { 'http-equiv': 'content-language', content: 'ja' },
       { name: 'viewport', content: 'width=640, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
       { property: 'og:title', content: 'VOCALOID-ManiaX オフィシャルサイト' },

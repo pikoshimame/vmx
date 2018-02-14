@@ -1,7 +1,7 @@
 {
   "name": "vmx",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
+  "description": "VOCALOID-ManiaX オフィシャルサイト",
   "author": "pikoshimame <pikoshimame@gmail.com>",
   "private": true,
   "scripts": {

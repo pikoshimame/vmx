@@ -13,6 +13,9 @@
           <vmx-door v-if="info" :link="info.link">
             <h3 class="titleSub">Door</h3>
           </vmx-door>
+          <vmx-door v-else>
+            <h3 class="titleSub">Door</h3>
+          </vmx-door>
         </section>
       </div>
       <vmx-caution/>
