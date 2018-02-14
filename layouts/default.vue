@@ -26,6 +26,10 @@ body {
   background: linear-gradient(left, hsl(1, 59%, 81%), #fff);
   animation: 'background-animation' 10s linear 0s infinite alternate;
 }
+body.v--modal-block-scroll {
+  position: relative;
+  width: 100%;
+}
 @keyframes background-animation {
   @for $i from 1 through 100 {
     #{$i}% { background: linear-gradient(left, hsl($i, 59%, 81%), #fff); }
@@ -50,6 +54,10 @@ button {
   padding: 0;
   outline: none;
   cursor: pointer;
+}
+ul {
+  margin: 0;
+  padding: 0;
 }
 li {
   list-style: none;

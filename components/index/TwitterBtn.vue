@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a class="btn" :href="twitter" target="_blank"><icon class="icon" name="twitter" width="22px"/>Latest information</a>
+    <a class="btn" :href="twitter" target="_blank"><icon class="icon" name="twitter" width="22px" height="100%"/>Latest information</a>
   </div>
 </template>
 
@@ -13,7 +13,6 @@ export default {
   components: { Icon }
 }
 </script>
-
 
 <style scoped>
 .btn {
@@ -37,6 +36,7 @@ export default {
   opacity: .7;
 }
 .icon {
+  display: block;
   padding-right: 10px;
 }
 </style>

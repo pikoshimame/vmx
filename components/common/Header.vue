@@ -157,8 +157,6 @@ export default {
   justify-content: space-between;
   font-size: 1.6rem;
   height: 60px;
-  margin: 0;
-  padding: 0;
 }
 .link {
   display: block;
