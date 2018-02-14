@@ -1,3 +1,5 @@
+const nodeExternals = require('webpack-node-externals');
+
 module.exports = {
   /*
   ** Headers of the page
@@ -20,7 +22,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Muli:200,200i,300i' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i' }
     ]
   },
   css: [
@@ -37,7 +39,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
+    extend (config, { isDev, isClient, isServer }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -46,9 +48,18 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+      if (isServer) {
+        config.externals = [
+          nodeExternals({
+            // default value for `whitelist` is
+            // [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i]
+            whitelist: [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
+          })
+        ]
+      }
     },
-    vendor: ['~/plugins/contentful']
+    vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal']
   },
-  plugins: ['~/plugins/contentful'],
+  plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal'],
   modules: ['@nuxtjs/dotenv']
 }
