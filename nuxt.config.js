@@ -61,5 +61,8 @@ module.exports = {
     vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal']
   },
   plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal'],
-  modules: ['@nuxtjs/dotenv']
+  modules: ['@nuxtjs/dotenv', '@nuxtjs/google-analytics'],
+  'google-analytics': {
+    id: 'UA-75339071-1'
+  }
 }
