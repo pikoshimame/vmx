@@ -42,7 +42,8 @@ module.exports = {
   generate: {
     minify: {
       removeScriptTypeAttributes: true
-    }
+    },
+    fallback: true
   },
   build: {
     /*
