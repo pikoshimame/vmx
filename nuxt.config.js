@@ -22,7 +22,7 @@ module.exports = {
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'VOCALOID-ManiaX オフィシャルサイト' },
       { name: 'twitter:description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
-      { name: 'twitter:image', content: 'https://club-vmx.com/summary_large_image.png' },
+      { name: 'twitter:image', content: 'https://club-vmx.com/summary_large_image.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
