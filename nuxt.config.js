@@ -62,8 +62,21 @@ module.exports = {
     vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal']
   },
   plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal'],
-  modules: ['@nuxtjs/dotenv', '@nuxtjs/google-analytics'],
+  modules: ['@nuxtjs/dotenv', '@nuxtjs/google-analytics', '@nuxtjs/pwa'],
   'google-analytics': {
     id: 'UA-75339071-1'
+  },
+  workbox: {
+    dev: true,
+    runtimeCaching: [
+      {
+        urlPattern: 'https://.*contentful.com/.*',
+        handler: 'staleWhileRevalidate'
+      },
+      {
+        urlPattern: 'https://.*ctfassets.net/.*',
+        handler: 'staleWhileRevalidate'
+      }
+    ]
   }
 }
