@@ -1,6 +1,6 @@
 <template>
   <div>
-    <modal class="modal" :name="modalName" :width="file.details.image.width / 2" :height="file.details.image.height / 2" :scrollable="true">
+    <modal class="modal" :name="modalName" :width="Math.floor(file.details.image.width / 2)" :height="Math.floor(file.details.image.height / 2)" :scrollable="true">
       <button-close class="close" :name="modalName" />
       <p class="img"><img :src="getHalfSizeUrl(file)" :srcset="`${getHalfSizeUrl(file)} 1x, ${file.url} 2x`" alt=""/></p>
     </modal>
@@ -15,7 +15,7 @@ export default {
   components: { ButtonClose },
   methods: {
     getHalfSizeUrl(file) {
-      return `${file.url}?w=${file.details.image.width / 2}`;
+      return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
     }
   }
 }
