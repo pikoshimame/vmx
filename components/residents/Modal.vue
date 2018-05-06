@@ -38,7 +38,7 @@ export default {
   components: { ButtonClose, ButtonWebsite, ButtonSoundcloud, ButtonTwitter },
   methods: {
     getHalfSizeUrl(file) {
-      return `${file.url}?w=${file.details.image.width / 2}`;
+      return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
     }
   }
 }

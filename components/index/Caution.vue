@@ -35,11 +35,11 @@
   }
 }
 .caution >>> li {
-  list-style: decimal;
-  text-indent: -2.2em;
+  text-indent: -2.5em;
+  counter-increment: num;
 }
 .caution >>> li::before {
-  content: "※";
-  padding-right: 1.2em;
+  content: "※"counter(num)".";
+  padding-right: .5em;
 }
 </style>
