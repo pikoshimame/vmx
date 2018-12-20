@@ -67,7 +67,6 @@ module.exports = {
     id: 'UA-75339071-1'
   },
   workbox: {
-    dev: true,
     runtimeCaching: [
       {
         urlPattern: 'https://.*contentful.com/.*',
