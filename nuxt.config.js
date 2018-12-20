@@ -49,7 +49,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -59,9 +59,9 @@ module.exports = {
         })
       }
     },
-    vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal']
+    vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal', '~/plugins/window-resize']
   },
-  plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal'],
+  plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal', '~/plugins/window-resize'],
   modules: ['@nuxtjs/dotenv', '@nuxtjs/google-analytics'],
   'google-analytics': {
     id: 'UA-75339071-1'

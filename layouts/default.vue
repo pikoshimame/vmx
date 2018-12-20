@@ -3,19 +3,21 @@
     <vmx-header/>
     <nuxt/>
     <vmx-footer/>
+    <vmx-background/>
   </div>
 </template>
 
 <script>
 import VmxHeader from '~/components/common/Header';
 import VmxFooter from '~/components/common/Footer';
+import VmxBackground from '~/components/common/Background';
 
 export default {
-  components: { VmxHeader, VmxFooter }
+  components: { VmxHeader, VmxFooter, VmxBackground }
 }
 </script>
 
-<style lang="scss">
+<style>
 html {
   color: #575757;
   font-size: 10px;
@@ -23,17 +25,10 @@ html {
 }
 body {
   font-family: Hiragino Sans, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: linear-gradient(to right, hsl(1, 59%, 81%), #fff);
-  animation: 'background-animation' 10s linear 0s infinite alternate;
 }
 body.v--modal-block-scroll {
   position: relative;
   width: 100%;
-}
-@keyframes background-animation {
-  @for $i from 1 through 100 {
-    #{$i}% { background: linear-gradient(to right, hsl($i, 59%, 81%), #fff); }
-  }
 }
 @media (min-width: 641px) {
   html {
