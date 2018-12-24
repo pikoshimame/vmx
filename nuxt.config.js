@@ -62,8 +62,20 @@ module.exports = {
     vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal', '~/plugins/window-resize']
   },
   plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal', '~/plugins/window-resize'],
-  modules: ['@nuxtjs/dotenv', '@nuxtjs/google-analytics'],
+  modules: ['@nuxtjs/dotenv', '@nuxtjs/google-analytics', '@nuxtjs/pwa'],
   'google-analytics': {
     id: 'UA-75339071-1'
+  },
+  workbox: {
+    runtimeCaching: [
+      {
+        urlPattern: 'https://.*contentful.com/.*',
+        handler: 'staleWhileRevalidate'
+      },
+      {
+        urlPattern: 'https://.*ctfassets.net/.*',
+        handler: 'staleWhileRevalidate'
+      }
+    ]
   }
 }
