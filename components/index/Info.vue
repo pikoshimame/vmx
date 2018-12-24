@@ -49,7 +49,7 @@ export default {
   transition: color .3s ease-out;
 }
 .link:hover {
-  color: #e84388;
+  color: #148dd3;
 }
 .link::after {
   content: "";
@@ -58,7 +58,7 @@ export default {
   right: 0;
   border-style: solid;
   border-width: 0 0 10px 10px;
-  border-color: transparent transparent #e84388 transparent;
+  border-color: transparent transparent #148dd3 transparent;
   width: 0;
   height: 0;
 }

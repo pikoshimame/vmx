@@ -74,7 +74,7 @@ export default {
   padding-right: 30px;
 }
 .name {
-  color: #00a782;
+  color: #148dd3;
   font-size: 3.2rem;
   font-weight: bold;
 }
@@ -93,7 +93,7 @@ export default {
   margin-top: 50px;
 }
 .profile >>> a {
-  color: #e84388;
+  color: #148dd3;
 }
 .profile >>> a:hover {
   text-decoration: none;

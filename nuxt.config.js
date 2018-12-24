@@ -26,7 +26,8 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Muli:200,300' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Work+Sans:500' }
     ]
   },
   css: [
@@ -35,7 +36,7 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#00a782' },
+  loading: { color: '#148dd3' },
   /*
   ** Build configuration
   */

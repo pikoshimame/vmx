@@ -36,10 +36,9 @@ body.v--modal-block-scroll {
   }
 }
 h2, h3 {
-  color: #00a782;
-  font-family: 'Muli', sans-serif;
-  font-style: italic;
-  font-weight: 300;
+  color: #148dd3;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
   line-height: 1em;
   margin: 0;
 }
