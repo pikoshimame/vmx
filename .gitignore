@@ -12,3 +12,6 @@ dist
 
 # env
 .env
+
+# Service Worker
+sw.*
