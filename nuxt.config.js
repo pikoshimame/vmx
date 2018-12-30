@@ -1,4 +1,5 @@
 module.exports = {
+  srcDir: 'src',
   /*
   ** Headers of the page
   */
@@ -50,6 +51,7 @@ module.exports = {
     fallback: true
   },
   build: {
+    publicPath: '/assets/',
     /*
     ** Run ESLint on save
     */
@@ -62,10 +64,9 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    },
-    vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal', '~/plugins/window-resize']
+    }
   },
-  plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal', '~/plugins/window-resize'],
+  plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal'],
   modules: ['@nuxtjs/dotenv', '@nuxtjs/google-analytics', '@nuxtjs/pwa'],
   'google-analytics': {
     id: 'UA-75339071-1'

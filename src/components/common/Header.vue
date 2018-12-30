@@ -80,9 +80,16 @@ export default {
       this.scrollX = window.scrollX;
     }
   },
-  mounted() {
-    this.scroll();
-    window.addEventListener('scroll', this.scroll);
+  created() {
+    if (process.browser) {
+      window.addEventListener('scroll', this.scroll);
+      window.dispatchEvent(new Event('scroll'));
+    }
+  },
+  destroyed () {
+    if (process.browser) {
+      window.removeEventListener('scroll', this.scroll);
+    }
   }
 };
 </script>

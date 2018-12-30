@@ -1,6 +1,5 @@
 <template>
-  <div class="bg"
-       v-window-resize="resize">
+  <div class="bg">
     <div v-for="(item, index) in items"
          :key="index"
          class="item"
@@ -40,6 +39,17 @@ export default {
           }
         }
       });
+    }
+  },
+  created() {
+    if (process.browser) {
+      window.addEventListener('resize', this.resize);
+      window.dispatchEvent(new Event('resize'));
+    }
+  },
+  destroyed () {
+    if (process.browser) {
+      window.removeEventListener('resize', this.resize);
     }
   },
   watch: {
