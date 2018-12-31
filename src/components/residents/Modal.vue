@@ -54,6 +54,7 @@ export default {
   color: #575757;
   padding: 60px 30px 40px;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
+  margin-bottom: 100px;
 }
 .close {
   position: absolute;
@@ -74,7 +75,7 @@ export default {
   padding-right: 30px;
 }
 .name {
-  color: #00a782;
+  color: #148dd3;
   font-size: 3.2rem;
   font-weight: bold;
 }
@@ -93,7 +94,7 @@ export default {
   margin-top: 50px;
 }
 .profile >>> a {
-  color: #e84388;
+  color: #148dd3;
 }
 .profile >>> a:hover {
   text-decoration: none;

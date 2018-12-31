@@ -1,4 +1,5 @@
 module.exports = {
+  srcDir: 'src',
   /*
   ** Headers of the page
   */
@@ -18,15 +19,19 @@ module.exports = {
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: 'VOCALOID-ManiaX オフィシャルサイト' },
       { property: 'og:description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
-      { property: 'og:image', content: 'https://club-vmx.com/ogp.png' },
+      { property: 'og:image', content: 'https://club-vmx.com/ogp.jpg' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'VOCALOID-ManiaX オフィシャルサイト' },
       { name: 'twitter:description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
-      { name: 'twitter:image', content: 'https://club-vmx.com/summary_large_image.png' }
+      { name: 'twitter:image', content: 'https://club-vmx.com/summary_large_image.jpg' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i' }
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon-180x180.png' },
+      { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/android-chrome-192x192.png' },
+      { rel: 'manifest', href: '/manifest.json' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Muli:200,300' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Work+Sans:500' }
     ]
   },
   css: [
@@ -35,7 +40,7 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#00a782' },
+  loading: { color: '#148dd3' },
   /*
   ** Build configuration
   */
@@ -46,10 +51,11 @@ module.exports = {
     fallback: true
   },
   build: {
+    publicPath: '/assets/',
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -58,12 +64,23 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    },
-    vendor: ['~/plugins/contentful', '~/plugins/vue-js-modal']
+    }
   },
   plugins: ['~/plugins/contentful', '~/plugins/vue-js-modal'],
-  modules: ['@nuxtjs/dotenv', '@nuxtjs/google-analytics'],
+  modules: ['@nuxtjs/dotenv', '@nuxtjs/google-analytics', '@nuxtjs/pwa'],
   'google-analytics': {
     id: 'UA-75339071-1'
+  },
+  workbox: {
+    runtimeCaching: [
+      {
+        urlPattern: 'https://.*contentful.com/.*',
+        handler: 'staleWhileRevalidate'
+      },
+      {
+        urlPattern: 'https://.*ctfassets.net/.*',
+        handler: 'staleWhileRevalidate'
+      }
+    ]
   }
 }
