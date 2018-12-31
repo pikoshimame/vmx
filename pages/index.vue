@@ -93,7 +93,6 @@ export default {
 }
 .titleSub {
   font-size: 2.4rem;
-  opacity: .7;
   padding-bottom: 9px;
 }
 </style>
