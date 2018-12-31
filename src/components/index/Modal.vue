@@ -48,6 +48,7 @@ export default {
   color: #575757;
   padding: 40px 30px 30px;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
+  margin-bottom: 100px;
 }
 .close {
   position: absolute;
@@ -57,7 +58,7 @@ export default {
   height: 23px;
 }
 .name {
-  color: #00a782;
+  color: #148dd3;
   font-size: 3.2rem;
   font-weight: bold;
 }

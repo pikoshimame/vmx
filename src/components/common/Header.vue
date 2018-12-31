@@ -17,7 +17,7 @@
             <h1 class="logo">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 37">
                 <title>VOCALOID-ManiaX</title>
-                <path fill="#C3267F" d="M11.74,2.9L0,0l5.552,17.498L16.909,1.625L11.74,2.9z M23.48,0l-4.491,1.109l2.525,5.087L23.48,0z
+                <path fill="#148dd3" d="M11.74,2.9L0,0l5.552,17.498L16.909,1.625L11.74,2.9z M23.48,0l-4.491,1.109l2.525,5.087L23.48,0z
                   M18.083,2.227L6.045,19.055L11.74,37l9.205-29.009L18.083,2.227z M73.428,18.49h8.022l2.004,3.339l0.477-0.194L77.439,10.82
                   l-6.493,10.815l0.479,0.194L73.428,18.49z M77.439,11.81l3.704,6.171h-7.41L77.439,11.81z M47.201,9.356L46.79,9.055
                   l-8.697,11.864L29.394,9.055l-0.411,0.301l9.109,12.424L47.201,9.356z M52.387,21.78c2.977,0,5.397-2.419,5.397-5.393
@@ -80,13 +80,19 @@ export default {
       this.scrollX = window.scrollX;
     }
   },
-  mounted() {
-    this.scroll();
-    window.addEventListener('scroll', this.scroll);
+  created() {
+    if (process.browser) {
+      window.addEventListener('scroll', this.scroll);
+      window.dispatchEvent(new Event('scroll'));
+    }
+  },
+  destroyed () {
+    if (process.browser) {
+      window.removeEventListener('scroll', this.scroll);
+    }
   }
 };
 </script>
-
 
 <style scoped>
 .header {

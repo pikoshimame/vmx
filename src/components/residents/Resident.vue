@@ -90,6 +90,6 @@ export default {
   opacity: 1;
 }
 .btn:hover >>> .name {
-  color: #00755c;
+  color: #148dd3;
 }
 </style>

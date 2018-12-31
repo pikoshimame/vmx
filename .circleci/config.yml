@@ -14,13 +14,19 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: yarn install
+      - run: npm install
 
-      - run: echo CTF_SPACE_ID=$CTF_SPACE_ID >> .env
+      - run: cd functions
 
-      - run: echo CTF_CDA_ACCESS_TOKEN=$CTF_CDA_ACCESS_TOKEN >> .env
+      - run: npm install
 
-      - run: yarn generate
+      - run: cd ../
+
+      - run: echo CTF_SPACE_ID=$CTF_SPACE_ID >> src/.env
+
+      - run: echo CTF_CDA_ACCESS_TOKEN=$CTF_CDA_ACCESS_TOKEN >> src/.env
+
+      - run: npm run setup
 
       - run: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
 

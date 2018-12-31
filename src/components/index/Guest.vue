@@ -79,7 +79,7 @@ export default {
   right: 0;
   border-style: solid;
   border-width: 0 0 10px 10px;
-  border-color: transparent transparent #00755c transparent;
+  border-color: transparent transparent #148dd3 transparent;
   width: 0;
   height: 0;
 }
@@ -87,6 +87,6 @@ export default {
   opacity: 1;
 }
 .btn:hover >>> .name {
-  color: #00755c;
+  color: #148dd3;
 }
 </style>

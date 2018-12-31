@@ -12,3 +12,12 @@ dist
 
 # env
 .env
+
+# Service Worker
+sw.*
+
+# public
+public
+
+# Firebase cache
+.firebase
