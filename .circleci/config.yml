@@ -16,17 +16,11 @@ jobs:
 
       - run: npm install
 
-      - run: cd functions
-
-      - run: npm install
-
-      - run: cd ../
+      - run: npm --prefix ./functions install ./functions
 
       - run: echo CTF_SPACE_ID=$CTF_SPACE_ID >> src/.env
 
       - run: echo CTF_CDA_ACCESS_TOKEN=$CTF_CDA_ACCESS_TOKEN >> src/.env
-
-      - run: npm run build
 
       - run: npm run setup
 
