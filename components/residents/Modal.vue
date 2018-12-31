@@ -47,6 +47,7 @@ export default {
 <style scoped>
 .modal.v--modal-overlay {
   background-color: rgba(0, 0, 0, .42);
+  padding-bottom: 100px;
 }
 .modal >>> .v--modal {
   position: relative;
