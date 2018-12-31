@@ -26,6 +26,8 @@ jobs:
 
       - run: echo CTF_CDA_ACCESS_TOKEN=$CTF_CDA_ACCESS_TOKEN >> src/.env
 
+      - run: npm run build
+
       - run: npm run setup
 
       - run: ./node_modules/.bin/firebase use default
