@@ -14,7 +14,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
       { itemprop: 'name', content: 'VOCALOID-ManiaX オフィシャルサイト' },
       { itemprop: 'description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。' },
-      { itemprop: 'itemprop', content: 'https://club-vmx.com/ogp.png' },
+      { itemprop: 'itemprop', content: 'https://club-vmx.com/ogp.jpg' },
       { property: 'og:url', content: 'https://club-vmx.com' },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: 'VOCALOID-ManiaX オフィシャルサイト' },
