@@ -63,7 +63,7 @@ export default {
 }
 .name {
   position: absolute;
-  left: 50%;
+  left: 47%;
   top: 0;
   bottom: 0;
   font-size: 2.1rem;
