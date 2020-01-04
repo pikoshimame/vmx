@@ -8,39 +8,33 @@ const md = new MarkdownIt({
 });
 
 export const state = () => ({
-  residents: {
-    djs: [],
-    vjs: []
-  }
+  djs: [],
+  vjs: []
 });
 
 export const getters = {
-  residentsHtml({residents}) {
-    const djs = residents.djs.map((entry) => {
+  djsHtml({djs}) {
+    return djs.map((entry) => {
       return {
         ...entry,
         profile: md.render(entry.profile)
       };
     });
-    const vjs = residents.vjs.map((entry) => {
+  },
+  vjsHtml({vjs}) {
+    return vjs.map((entry) => {
       return {
         ...entry,
         profile: md.render(entry.profile)
       };
     });
-    return {
-      djs,
-      vjs
-    };
   }
 };
 
 export const mutations = {
   setResidents(state, {djs, vjs}) {
-    state.residents = {
-      djs,
-      vjs
-    };
+    state.djs = djs;
+    state.vjs = vjs;
   }
 };
 
