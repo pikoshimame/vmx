@@ -45,7 +45,9 @@ import contentful from '~/plugins/contentful';
 const client = contentful.createClient();
 
 export default {
-  components: {VmxModal},
+  components: {
+    VmxModal
+  },
   async asyncData(context) {
     const photos = await client.getEntries({content_type: 'photo', order: 'fields.name'});
     return {

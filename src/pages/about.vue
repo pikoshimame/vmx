@@ -21,7 +21,6 @@ import contentful from '~/plugins/contentful';
 const client = contentful.createClient();
 
 export default {
-  layout: 'illust',
   async asyncData(context) {
     const abouts = await client.getEntries({content_type: 'about'});
     return {
@@ -33,6 +32,13 @@ export default {
   data() {
     return {
       about: ''
+    };
+  },
+  head() {
+    return {
+      bodyAttrs: {
+        class: 'illust'
+      }
     };
   }
 };

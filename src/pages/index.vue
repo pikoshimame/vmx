@@ -55,7 +55,6 @@ import contentful from '~/plugins/contentful';
 const client = contentful.createClient();
 
 export default {
-  layout: 'illust',
   components: {
     VmxLogo,
     VmxInfo,
@@ -95,6 +94,13 @@ export default {
       },
       guests: [],
       twitter: ''
+    };
+  },
+  head() {
+    return {
+      bodyAttrs: {
+        class: 'illust'
+      }
     };
   }
 };
