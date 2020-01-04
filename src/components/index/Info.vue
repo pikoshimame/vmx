@@ -1,17 +1,30 @@
 <template>
   <div>
     <div class="info">
-      <slot/>
-      <time class="datetime" :datetime="info.datetime"><span class="date">{{ info.date }}</span><span class="time">{{ info.time }}</span></time>
-      <a class="link" :href="info.link" target="_blank">Akihabara MOGRA</a>
+      <slot />
+      <time
+        class="datetime"
+        :datetime="info.datetime"
+      ><span class="date">{{ info.date }}</span><span class="time">{{ info.time }}</span></time>
+      <a
+        class="link"
+        :href="info.link"
+        target="_blank"
+        rel="noopener"
+      >Akihabara MOGRA</a>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['info']
-}
+  props: {
+    info: {
+      type: Object,
+      required: true
+    }
+  }
+};
 </script>
 
 <style scoped>

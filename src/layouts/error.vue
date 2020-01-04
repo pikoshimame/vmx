@@ -1,9 +1,16 @@
 <template>
   <div>
     <section class="notfound">
-      <vmx-logo/>
-      <h2 class="title">404 NOT FOUND</h2>
-      <nuxt-link class="link" to="/">トップへ</nuxt-link>
+      <vmx-logo />
+      <h2 class="title">
+        404 NOT FOUND
+      </h2>
+      <nuxt-link
+        class="link"
+        to="/"
+      >
+        トップへ
+      </nuxt-link>
     </section>
   </div>
 </template>
@@ -12,8 +19,10 @@
 import VmxLogo from '~/components/index/Logo';
 
 export default {
-  components: { VmxLogo },
-}
+  components: {
+    VmxLogo
+  }
+};
 </script>
 
 
@@ -22,10 +31,10 @@ export default {
   text-align: center;
 }
 .title {
-	border-bottom: rgba(0, 0, 0, .18) solid 1px;
+  border-bottom: rgba(0, 0, 0, .18) solid 1px;
   font-size: 3.8rem;
-	width: 480px;
-	margin: auto;
+  width: 480px;
+  margin: auto;
   padding: 0 20px 10px;
 }
 .link {

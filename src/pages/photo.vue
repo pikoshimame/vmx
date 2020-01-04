@@ -2,14 +2,37 @@
   <div>
     <main class="main">
       <section>
-        <h2 class="title">Photo</h2>
-        <ul class="photos" v-if="photos">
-          <li class="photos__item" v-if="photo.fields" v-for="(photo, index) in photos" :key="photo.fields.title">
-            <button class="btn" @click="$modal.show(`${modalKey}${index}`)">
-              <img :src="getThumbnailHalfSizeUrl(photo.fields.file)" :srcset="`${getThumbnailHalfSizeUrl(photo.fields.file)} 1x, ${getThumbnailSizeUrl(photo.fields.file)} 2x`" alt=""/>
-            </button>
-            <vmx-modal :file="photo.fields.file" :modalName="`${modalKey}${index}`"/>
-          </li>
+        <h2 class="title">
+          Photo
+        </h2>
+        <ul
+          v-if="photos"
+          class="photos"
+        >
+          <template
+            v-for="(photo, index) in photos"
+          >
+            <li
+              v-if="photo.fields"
+              :key="photo.fields.title"
+              class="photos__item"
+            >
+              <button
+                class="btn"
+                @click="$modal.show(`${modalKey}${index}`)"
+              >
+                <img
+                  :src="getThumbnailHalfSizeUrl(photo.fields.file)"
+                  :srcset="`${getThumbnailHalfSizeUrl(photo.fields.file)} 1x, ${getThumbnailSizeUrl(photo.fields.file)} 2x`"
+                  alt=""
+                >
+              </button>
+              <vmx-modal
+                :file="photo.fields.file"
+                :modal-name="`${modalKey}${index}`"
+              />
+            </li>
+          </template>
         </ul>
       </section>
     </main>
@@ -22,19 +45,19 @@ import contentful from '~/plugins/contentful';
 const client = contentful.createClient();
 
 export default {
-  components: { VmxModal },
+  components: {VmxModal},
+  async asyncData(context) {
+    const photos = await client.getEntries({content_type: 'photo', order: 'fields.name'});
+    return {
+      photos: photos.items.map((entry) => {
+        return entry.fields.image;
+      })[0]
+    };
+  },
   data() {
     return {
       photos: [],
       modalKey: 'photo-'
-    }
-  },
-  async asyncData(context) {
-    const photos = await client.getEntries({ content_type: 'photo', order: 'fields.name' });
-    return {
-      photos: photos.items.map(entry => {
-        return entry.fields.image;
-      })[0]
     };
   },
   methods: {
@@ -45,7 +68,7 @@ export default {
       return `${file.url}?fit=thumb&w=150&h=150`;
     }
   }
-}
+};
 </script>
 
 <style scoped>

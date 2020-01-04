@@ -1,20 +1,61 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div>
-    <modal class="modal" :name="modalName" :width="600" :height="'auto'" :scrollable="true">
-      <button-close class="close" :name="modalName" />
-      <p class="name" v-html="guest.name"/>
-      <p class="credit" v-if="guest.credit" v-html="guest.credit"/>
-      <p class="img" v-if="guest.image.fields"><img :src="getHalfSizeUrl(guest.image.fields.file)" :srcset="`${getHalfSizeUrl(guest.image.fields.file)} 1x, ${guest.image.fields.file.url} 2x`" :alt="guest.name"/></p>
-      <p class="profile" v-html="guest.prifile"/>
-      <ul class="links" v-if="guest.website || guest.soundcloud || guest.twitter">
-        <li class="links__item" v-if="guest.twitter">
-          <button-twitter :link="guest.twitter"/>
+    <modal
+      class="modal"
+      :name="modalName"
+      :width="600"
+      :height="'auto'"
+      :scrollable="true"
+    >
+      <button-close
+        class="close"
+        :name="modalName"
+      />
+      <p
+        class="name"
+        v-html="guest.name"
+      />
+      <p
+        v-if="guest.credit"
+        class="credit"
+        v-html="guest.credit"
+      />
+      <p
+        v-if="guest.image.fields"
+        class="img"
+      >
+        <img
+          :src="getHalfSizeUrl(guest.image.fields.file)"
+          :srcset="`${getHalfSizeUrl(guest.image.fields.file)} 1x, ${guest.image.fields.file.url} 2x`"
+          :alt="guest.name"
+        >
+      </p>
+      <p
+        class="profile"
+        v-html="guest.prifile"
+      />
+      <ul
+        v-if="guest.website || guest.soundcloud || guest.twitter"
+        class="links"
+      >
+        <li
+          v-if="guest.twitter"
+          class="links__item"
+        >
+          <button-twitter :link="guest.twitter" />
         </li>
-        <li class="links__item" v-if="guest.soundcloud">
-          <button-soundcloud :link="guest.soundcloud"/>
+        <li
+          v-if="guest.soundcloud"
+          class="links__item"
+        >
+          <button-soundcloud :link="guest.soundcloud" />
         </li>
-        <li class="links__item" v-if="guest.website">
-          <button-website :link="guest.website"/>
+        <li
+          v-if="guest.website"
+          class="links__item"
+        >
+          <button-website :link="guest.website" />
         </li>
       </ul>
     </modal>
@@ -28,14 +69,28 @@ import ButtonSoundcloud from '~/components/common/button/Soundcloud';
 import ButtonTwitter from '~/components/common/button/Twitter';
 
 export default {
-  props: ['guest', 'modalName'],
-  components: { ButtonClose, ButtonWebsite, ButtonSoundcloud, ButtonTwitter },
+  components: {
+    ButtonClose,
+    ButtonWebsite,
+    ButtonSoundcloud,
+    ButtonTwitter
+  },
+  props: {
+    guest: {
+      type: Object,
+      required: true
+    },
+    modalName: {
+      type: String,
+      required: true
+    }
+  },
   methods: {
     getHalfSizeUrl(file) {
       return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -63,8 +118,8 @@ export default {
   font-weight: bold;
 }
 .credit {
-	font-size: 1.6rem;
-	font-style: italic;
+  font-size: 1.6rem;
+  font-style: italic;
   margin-top: 10px;
 }
 .img {

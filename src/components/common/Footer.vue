@@ -9,7 +9,9 @@
 <script>
 export default {
   computed: {
-    copyright() { return this.$store.state.copyright; }
+    copyright() {
+      return this.$store.state.copyright;
+    }
   }
 };
 </script>

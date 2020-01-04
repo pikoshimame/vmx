@@ -1,15 +1,39 @@
 <template>
   <div>
     <section>
-      <slot/>
+      <slot />
       <ul class="residents">
-        <li class="residents__item" v-for="(resident, index) in residents" :key="resident.displayOrder">
-          <button class="btn" @click="$modal.show(`${modalKey}${index}`)">
-            <span class="thumb" v-if="resident.thumbnail.fields"><img :src="getHalfSizeUrl(resident.thumbnail.fields.file)" :srcset="`${getHalfSizeUrl(resident.thumbnail.fields.file)} 1x, ${resident.thumbnail.fields.file.url} 2x`" :alt="resident.name"/></span>
-            <span class="thumb thumb--on" v-if="resident.thumbnail.fields"><img :src="getHalfSizeUrl(resident.thumbnail.fields.file)" :srcset="`${getHalfSizeUrl(resident.thumbnail.fields.file)} 1x, ${resident.thumbnail.fields.file.url} 2x`" :alt="resident.name"/></span>
+        <li
+          v-for="(resident, index) in residents"
+          :key="resident.displayOrder"
+          class="residents__item"
+        >
+          <button
+            class="btn"
+            @click="$modal.show(`${modalKey}${index}`)"
+          >
+            <span
+              v-if="resident.thumbnail.fields"
+              class="thumb"
+            ><img
+              :src="getHalfSizeUrl(resident.thumbnail.fields.file)"
+              :srcset="`${getHalfSizeUrl(resident.thumbnail.fields.file)} 1x, ${resident.thumbnail.fields.file.url} 2x`"
+              :alt="resident.name"
+            ></span>
+            <span
+              v-if="resident.thumbnail.fields"
+              class="thumb thumb--on"
+            ><img
+              :src="getHalfSizeUrl(resident.thumbnail.fields.file)"
+              :srcset="`${getHalfSizeUrl(resident.thumbnail.fields.file)} 1x, ${resident.thumbnail.fields.file.url} 2x`"
+              :alt="resident.name"
+            ></span>
             <span class="name">{{ resident.name }}</span>
           </button>
-          <vmx-modal :resident="resident" :modalName="`${modalKey}${index}`"/>
+          <vmx-modal
+            :resident="resident"
+            :modal-name="`${modalKey}${index}`"
+          />
         </li>
       </ul>
     </section>
@@ -20,14 +44,25 @@
 import VmxModal from '~/components/residents/Modal';
 
 export default {
-  props: ['residents', 'modalKey'],
-  components: { VmxModal },
+  components: {
+    VmxModal
+  },
+  props: {
+    residents: {
+      type: Array,
+      required: true
+    },
+    modalKey: {
+      type: String,
+      required: true
+    }
+  },
   methods: {
     getHalfSizeUrl(file) {
       return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
     }
   }
-}
+};
 </script>
 
 <style scoped>

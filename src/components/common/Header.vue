@@ -1,23 +1,46 @@
 <template>
   <div>
-    <header class="header" :style="{ left: -scrollX + 'px' }">
+    <header
+      class="header"
+      :style="{ left: -scrollX + 'px' }"
+    >
       <div class="inner">
-        <button class="btn" :class="{ 'is-hidden': !isHidden }" @click="click()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 20">
+        <button
+          class="btn"
+          :class="{ 'is-hidden': !isHidden }"
+          @click="click()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 44 20"
+          >
             <g opacity="0.45">
-              <path fill-rule="evenodd" clip-rule="evenodd" fill="#999999" d="M0,20h44v-6H0V20z M0,0v6h44V0H0z" />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                fill="#999999"
+                d="M0,20h44v-6H0V20z M0,0v6h44V0H0z"
+              />
             </g>
           </svg>
           <span class="text">Menu</span>
         </button>
       </div>
-      <div class="wrapper" :class="{ 'is-hidden': isHidden }">
+      <div
+        class="wrapper"
+        :class="{ 'is-hidden': isHidden }"
+      >
         <div class="inner">
           <router-link to="/">
             <h1 class="logo">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 37">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 120 37"
+              >
                 <title>VOCALOID-ManiaX</title>
-                <path fill="#148dd3" d="M11.74,2.9L0,0l5.552,17.498L16.909,1.625L11.74,2.9z M23.48,0l-4.491,1.109l2.525,5.087L23.48,0z
+                <path
+                  fill="#148dd3"
+                  d="M11.74,2.9L0,0l5.552,17.498L16.909,1.625L11.74,2.9z M23.48,0l-4.491,1.109l2.525,5.087L23.48,0z
                   M18.083,2.227L6.045,19.055L11.74,37l9.205-29.009L18.083,2.227z M73.428,18.49h8.022l2.004,3.339l0.477-0.194L77.439,10.82
                   l-6.493,10.815l0.479,0.194L73.428,18.49z M77.439,11.81l3.704,6.171h-7.41L77.439,11.81z M47.201,9.356L46.79,9.055
                   l-8.697,11.864L29.394,9.055l-0.411,0.301l9.109,12.424L47.201,9.356z M52.387,21.78c2.977,0,5.397-2.419,5.397-5.393
@@ -44,15 +67,37 @@
                   c0-2.295,1.764-4.164,3.934-4.164c2.169,0,3.933,1.869,3.933,4.164C103.708,31.903,101.944,33.771,99.775,33.771z M91.979,34.28
                   h0.509v-9.038h-0.509V34.28z M83.472,25.242c-2.976,0-5.396,1.913-5.396,4.264v4.76h0.509v-4.76c0-2.07,2.192-3.754,4.887-3.754
                   s4.887,1.684,4.887,3.754v4.774h0.511v-4.774C88.869,27.155,86.447,25.242,83.472,25.242z M20.107,29.113h23.29v-0.509h-23.29
-                  V29.113z"/>
+                  V29.113z"
+                />
               </svg>
             </h1>
           </router-link>
           <nav>
             <ul class="navi">
-              <li class="navi__item"><router-link class="link" to="/about/">About</router-link></li>
-              <li class="navi__item"><router-link class="link" to="/residents/">Residents</router-link></li>
-              <li class="navi__item"><router-link class="link" to="/photo/">Photo</router-link></li>
+              <li class="navi__item">
+                <router-link
+                  class="link"
+                  to="/about/"
+                >
+                  About
+                </router-link>
+              </li>
+              <li class="navi__item">
+                <router-link
+                  class="link"
+                  to="/residents/"
+                >
+                  Residents
+                </router-link>
+              </li>
+              <li class="navi__item">
+                <router-link
+                  class="link"
+                  to="/photo/"
+                >
+                  Photo
+                </router-link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -69,6 +114,17 @@ export default {
       scrollX: 0
     };
   },
+  created() {
+    if (process.client) {
+      window.addEventListener('scroll', this.scroll);
+      window.dispatchEvent(new Event('scroll'));
+    }
+  },
+  destroyed() {
+    if (process.client) {
+      window.removeEventListener('scroll', this.scroll);
+    }
+  },
   methods: {
     click() {
       this.isHidden = false;
@@ -78,17 +134,6 @@ export default {
     },
     scroll() {
       this.scrollX = window.scrollX;
-    }
-  },
-  created() {
-    if (process.browser) {
-      window.addEventListener('scroll', this.scroll);
-      window.dispatchEvent(new Event('scroll'));
-    }
-  },
-  destroyed () {
-    if (process.browser) {
-      window.removeEventListener('scroll', this.scroll);
     }
   }
 };

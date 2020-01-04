@@ -1,9 +1,9 @@
 <template>
   <div>
-    <vmx-header/>
-    <nuxt/>
-    <vmx-footer/>
-    <vmx-background/>
+    <vmx-header />
+    <nuxt />
+    <vmx-footer />
+    <vmx-background />
   </div>
 </template>
 
@@ -13,8 +13,12 @@ import VmxFooter from '~/components/common/Footer';
 import VmxBackground from '~/components/common/Background';
 
 export default {
-  components: { VmxHeader, VmxFooter, VmxBackground }
-}
+  components: {
+    VmxHeader,
+    VmxFooter,
+    VmxBackground
+  }
+};
 </script>
 
 <style>

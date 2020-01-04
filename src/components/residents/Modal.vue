@@ -1,24 +1,65 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div>
-    <modal class="modal" :name="modalName" :width="600" :height="'auto'" :scrollable="true">
-      <button-close class="close" :name="modalName" />
+    <modal
+      class="modal"
+      :name="modalName"
+      :width="600"
+      :height="'auto'"
+      :scrollable="true"
+    >
+      <button-close
+        class="close"
+        :name="modalName"
+      />
       <div class="inner">
         <div class="inner__item inner__item--left">
-          <p class="img" v-if="resident.image.fields"><img :src="getHalfSizeUrl(resident.image.fields.file)" :srcset="`${getHalfSizeUrl(resident.image.fields.file)} 1x, ${resident.image.fields.file.url} 2x`" :alt="resident.name"/></p>
+          <p
+            v-if="resident.image.fields"
+            class="img"
+          >
+            <img
+              :src="getHalfSizeUrl(resident.image.fields.file)"
+              :srcset="`${getHalfSizeUrl(resident.image.fields.file)} 1x, ${resident.image.fields.file.url} 2x`"
+              :alt="resident.name"
+            >
+          </p>
         </div>
         <div class="inner__item">
-          <p class="name" v-html="resident.name"/>
-          <p class="credit" v-if="resident.credit" v-html="resident.credit"/>
-          <p class="profile" v-html="resident.prifile"/>
-          <ul class="links" v-if="resident.website || resident.soundcloud || resident.twitter">
-            <li class="links__item" v-if="resident.twitter">
-              <button-twitter :link="resident.twitter"/>
+          <p
+            class="name"
+            v-html="resident.name"
+          />
+          <p
+            v-if="resident.credit"
+            class="credit"
+            v-html="resident.credit"
+          />
+          <p
+            class="profile"
+            v-html="resident.prifile"
+          />
+          <ul
+            v-if="resident.website || resident.soundcloud || resident.twitter"
+            class="links"
+          >
+            <li
+              v-if="resident.twitter"
+              class="links__item"
+            >
+              <button-twitter :link="resident.twitter" />
             </li>
-            <li class="links__item" v-if="resident.soundcloud">
-              <button-soundcloud :link="resident.soundcloud"/>
+            <li
+              v-if="resident.soundcloud"
+              class="links__item"
+            >
+              <button-soundcloud :link="resident.soundcloud" />
             </li>
-            <li class="links__item" v-if="resident.website">
-              <button-website :link="resident.website"/>
+            <li
+              v-if="resident.website"
+              class="links__item"
+            >
+              <button-website :link="resident.website" />
             </li>
           </ul>
         </div>
@@ -34,14 +75,28 @@ import ButtonSoundcloud from '~/components/common/button/Soundcloud';
 import ButtonTwitter from '~/components/common/button/Twitter';
 
 export default {
-  props: ['resident', 'modalName'],
-  components: { ButtonClose, ButtonWebsite, ButtonSoundcloud, ButtonTwitter },
+  components: {
+    ButtonClose,
+    ButtonWebsite,
+    ButtonSoundcloud,
+    ButtonTwitter
+  },
+  props: {
+    resident: {
+      type: Object,
+      required: true
+    },
+    modalName: {
+      type: String,
+      required: true
+    }
+  },
   methods: {
     getHalfSizeUrl(file) {
       return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -80,8 +135,8 @@ export default {
   font-weight: bold;
 }
 .credit {
-	font-size: 1.6rem;
-	font-style: italic;
+  font-size: 1.6rem;
+  font-style: italic;
   margin-top: 20px;
 }
 .img >>> img {

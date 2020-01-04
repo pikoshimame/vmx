@@ -1,6 +1,9 @@
 <template>
-  <link-base class="link" :link="link">
-    <icon-soundcloud class="icon"/>
+  <link-base
+    class="link"
+    :link="link"
+  >
+    <icon-soundcloud class="icon" />
   </link-base>
 </template>
 
@@ -9,9 +12,17 @@ import LinkBase from '~/components/common/button/LinkBase';
 import IconSoundcloud from '~/components/common/icon/Soundcloud';
 
 export default {
-  props: ['link'],
-  components: { LinkBase, IconSoundcloud }
-}
+  components: {
+    LinkBase,
+    IconSoundcloud
+  },
+  props: {
+    link: {
+      type: String,
+      required: true
+    }
+  }
+};
 </script>
 
 <style scoped>

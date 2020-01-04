@@ -1,6 +1,11 @@
 <template>
   <div>
-    <a class="btn" :href="twitter" target="_blank"><icon-twitter class="icon"/>Latest information</a>
+    <a
+      class="btn"
+      :href="twitter"
+      target="_blank"
+      rel="noopener"
+    ><icon-twitter class="icon" />Latest information</a>
   </div>
 </template>
 
@@ -8,9 +13,16 @@
 import IconTwitter from '~/components/common/icon/Twitter';
 
 export default {
-  props: ['twitter'],
-  components: { IconTwitter }
-}
+  components: {
+    IconTwitter
+  },
+  props: {
+    twitter: {
+      type: String,
+      required: true
+    }
+  }
+};
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
   <link-base :link="link">
-    <icon-website class="icon"/>
+    <icon-website class="icon" />
   </link-base>
 </template>
 
@@ -9,9 +9,17 @@ import LinkBase from '~/components/common/button/LinkBase';
 import IconWebsite from '~/components/common/icon/Website';
 
 export default {
-  props: ['link'],
-  components: { LinkBase, IconWebsite }
-}
+  components: {
+    LinkBase,
+    IconWebsite
+  },
+  props: {
+    link: {
+      type: String,
+      required: true
+    }
+  }
+};
 </script>
 
 <style scoped>

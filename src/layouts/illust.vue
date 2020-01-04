@@ -1,13 +1,15 @@
 <template>
-  <vmx-default class="layout"/>
+  <vmx-default class="layout" />
 </template>
 
 <script>
 import VmxDefault from './default';
 
 export default {
-  components: { VmxDefault }
-}
+  components: {
+    VmxDefault
+  }
+};
 </script>
 
 <style>
