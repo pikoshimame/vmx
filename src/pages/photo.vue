@@ -41,26 +41,23 @@
 
 <script>
 import VmxModal from '~/components/photo/Modal';
-import contentful from '~/plugins/contentful';
-const client = contentful.createClient();
 
 export default {
   components: {
     VmxModal
   },
-  async asyncData(context) {
-    const photos = await client.getEntries({content_type: 'photo', order: 'fields.name'});
-    return {
-      photos: photos.items.map((entry) => {
-        return entry.fields.image;
-      })[0]
-    };
+  async fetch({store}) {
+    await store.dispatch('photo/fetch');
   },
   data() {
     return {
-      photos: [],
       modalKey: 'photo-'
     };
+  },
+  computed: {
+    photos() {
+      return this.$store.state.photo.list;
+    }
   },
   methods: {
     getThumbnailSizeUrl(file) {
