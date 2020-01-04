@@ -35,9 +35,9 @@
             class="credit"
             v-html="resident.credit"
           />
-          <p
+          <div
             class="profile"
-            v-html="resident.prifile"
+            v-html="resident.profile"
           />
           <ul
             v-if="resident.website || resident.soundcloud || resident.twitter"
@@ -99,17 +99,20 @@ export default {
 };
 </script>
 
-<style scoped>
-.modal.v--modal-overlay {
-  background-color: rgba(0, 0, 0, .42);
-}
-.modal >>> .v--modal {
-  position: relative;
-  border-radius: 4px;
-  color: #575757;
-  padding: 60px 30px 40px;
-  box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
-  margin-bottom: 100px;
+<style lang="scss" scoped>
+.modal {
+  &.v--modal-overlay {
+    background-color: rgba(0, 0, 0, .42);
+  }
+
+  /deep/ .v--modal {
+    position: relative;
+    border-radius: 4px;
+    color: #575757;
+    padding: 60px 30px 40px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
+    margin-bottom: 100px;
+  }
 }
 .close {
   position: absolute;
@@ -121,13 +124,15 @@ export default {
 .inner {
   display: flex;
   justify-content: space-between;
-}
-.inner__item {
-  width: 270px;
-  box-sizing: border-box;
-}
-.inner__item--left {
-  padding-right: 30px;
+
+  &__item {
+    width: 270px;
+    box-sizing: border-box;
+
+    &--left {
+      padding-right: 30px;
+    }
+  }
 }
 .name {
   color: #148dd3;
@@ -139,27 +144,38 @@ export default {
   font-style: italic;
   margin-top: 20px;
 }
-.img >>> img {
-  display: block;
-  margin: auto;
+.img {
+  /deep/ img {
+    display: block;
+    margin: auto;
+  }
 }
 .profile {
   font-size: 1.4rem;
   line-height: 1.6em;
   margin-top: 50px;
-}
-.profile >>> a {
-  color: #148dd3;
-}
-.profile >>> a:hover {
-  text-decoration: none;
+
+  /deep/ p {
+    & + p {
+      padding-top: 1.6em;
+    }
+  }
+
+  /deep/ a {
+    color: #148dd3;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 .links {
   display: flex;
   justify-content: flex-start;
   margin-top: 25px;
-}
-.links__item {
-  padding-right: 34px;
+
+  &__item {
+    padding-right: 34px;
+  }
 }
 </style>
