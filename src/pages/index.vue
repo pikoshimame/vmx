@@ -63,19 +63,13 @@ export default {
     VmxCaution,
     VmxTwitterBtn
   },
+  async fetch({store}) {
+    await store.dispatch('info/fetch');
+  },
   async asyncData(context) {
-    const infos = await client.getEntries({content_type: 'info', order: '-fields.datetime'});
     const guests = await client.getEntries({content_type: 'guest', order: 'fields.displayOrder'});
     const socials = await client.getEntries({content_type: 'socialMedia', order: 'fields.twitter'});
     return {
-      info: infos.items.map((entry) => {
-        return {
-          date: entry.fields['date'],
-          time: entry.fields['time'],
-          datetime: entry.fields['datetime'],
-          link: entry.fields['link']
-        };
-      })[0],
       guests: guests.items.map((entry) => {
         return entry.fields;
       }),
@@ -86,15 +80,14 @@ export default {
   },
   data() {
     return {
-      info: {
-        date: '',
-        time: '',
-        datetime: '',
-        link: ''
-      },
       guests: [],
       twitter: ''
     };
+  },
+  computed: {
+    info() {
+      return this.$store.state.info;
+    }
   },
   head() {
     return {
