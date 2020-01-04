@@ -6,7 +6,7 @@
         <h2 class="title">
           About
         </h2>
-        <p
+        <div
           v-if="about"
           class="text"
           v-html="about"
@@ -17,22 +17,14 @@
 </template>
 
 <script>
-import contentful from '~/plugins/contentful';
-const client = contentful.createClient();
-
 export default {
-  async asyncData(context) {
-    const abouts = await client.getEntries({content_type: 'about'});
-    return {
-      about: abouts.items.map((entry) => {
-        return entry.fields['text'];
-      })[0]
-    };
+  async fetch({store}) {
+    await store.dispatch('about/fetch');
   },
-  data() {
-    return {
-      about: ''
-    };
+  computed: {
+    about() {
+      return this.$store.getters['about/textHtml'];
+    }
   },
   head() {
     return {
@@ -44,7 +36,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   width: 540px;
   margin: auto;
@@ -57,5 +49,11 @@ export default {
 .text {
   font-size: 1.8rem;
   line-height: 1.7em;
+
+  /deep/ p {
+    & + p {
+      padding-top: 1.7em;
+    }
+  }
 }
 </style>
