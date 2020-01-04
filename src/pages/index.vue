@@ -64,15 +64,14 @@ export default {
     VmxTwitterBtn
   },
   async fetch({store}) {
-    await store.dispatch('info/fetch');
+    const promises = [];
+    promises.push(store.dispatch('info/fetch'));
+    promises.push(store.dispatch('guests/fetch'));
+    await Promise.all(promises);
   },
   async asyncData(context) {
-    const guests = await client.getEntries({content_type: 'guest', order: 'fields.displayOrder'});
     const socials = await client.getEntries({content_type: 'socialMedia', order: 'fields.twitter'});
     return {
-      guests: guests.items.map((entry) => {
-        return entry.fields;
-      }),
       twitter: socials.items.map((entry) => {
         return entry.fields['twitter'];
       })[0]
@@ -80,13 +79,15 @@ export default {
   },
   data() {
     return {
-      guests: [],
       twitter: ''
     };
   },
   computed: {
     info() {
       return this.$store.state.info;
+    },
+    guests() {
+      return this.$store.getters['guests/listHtml'];
     }
   },
   head() {

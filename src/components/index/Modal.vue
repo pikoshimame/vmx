@@ -31,9 +31,9 @@
           :alt="guest.name"
         >
       </p>
-      <p
+      <div
         class="profile"
-        v-html="guest.prifile"
+        v-html="guest.profile"
       />
       <ul
         v-if="guest.website || guest.soundcloud || guest.twitter"
@@ -93,17 +93,20 @@ export default {
 };
 </script>
 
-<style scoped>
-.modal.v--modal-overlay {
-  background-color: rgba(0, 0, 0, .42);
-}
-.modal >>> .v--modal {
-  position: relative;
-  border-radius: 4px;
-  color: #575757;
-  padding: 40px 30px 30px;
-  box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
-  margin-bottom: 100px;
+<style lang="scss" scoped>
+.modal {
+  &.v--modal-overlay {
+    background-color: rgba(0, 0, 0, .42);
+  }
+
+  /deep/ .v--modal {
+    position: relative;
+    border-radius: 4px;
+    color: #575757;
+    padding: 40px 30px 30px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
+    margin-bottom: 100px;
+  }
 }
 .close {
   position: absolute;
@@ -124,22 +127,30 @@ export default {
 }
 .img {
   margin-top: 30px;
-}
-.img >>> img {
-  display: block;
-  margin: auto;
+
+  /deep/ img {
+    display: block;
+    margin: auto;
+  }
 }
 .profile {
   font-size: 1.8rem;
   line-height: 1.5em;
   margin-top: 40px;
+
+  /deep/ p {
+    & + p {
+      padding-top: 1.5em;
+    }
+  }
 }
 .links {
   display: flex;
   justify-content: flex-start;
   margin-top: 30px;
-}
-.links__item {
-  padding-right: 34px;
+
+  &__item {
+    padding-right: 34px;
+  }
 }
 </style>
