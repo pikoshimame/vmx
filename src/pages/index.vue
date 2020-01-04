@@ -51,8 +51,6 @@ import VmxDoor from '~/components/index/Door';
 import VmxGuest from '~/components/index/Guest';
 import VmxCaution from '~/components/index/Caution';
 import VmxTwitterBtn from '~/components/index/TwitterBtn';
-import contentful from '~/plugins/contentful';
-const client = contentful.createClient();
 
 export default {
   components: {
@@ -67,20 +65,8 @@ export default {
     const promises = [];
     promises.push(store.dispatch('info/fetch'));
     promises.push(store.dispatch('guests/fetch'));
+    promises.push(store.dispatch('socialMedia/fetch'));
     await Promise.all(promises);
-  },
-  async asyncData(context) {
-    const socials = await client.getEntries({content_type: 'socialMedia', order: 'fields.twitter'});
-    return {
-      twitter: socials.items.map((entry) => {
-        return entry.fields['twitter'];
-      })[0]
-    };
-  },
-  data() {
-    return {
-      twitter: ''
-    };
   },
   computed: {
     info() {
@@ -88,6 +74,9 @@ export default {
     },
     guests() {
       return this.$store.getters['guests/listHtml'];
+    },
+    twitter() {
+      return this.$store.state.socialMedia.twitter;
     }
   },
   head() {
