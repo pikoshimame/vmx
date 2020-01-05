@@ -26,7 +26,7 @@ export const actions = {
     try {
       const config = {
         content_type: 'copyright',
-        order: '-fields.copyright',
+        order: '-fields.text',
         limit: 1
       };
       const response = await client.getEntries(config);

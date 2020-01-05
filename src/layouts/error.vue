@@ -3,7 +3,7 @@
     <section class="notfound">
       <vmx-logo />
       <h2 class="title">
-        404 NOT FOUND
+        {{ text }}
       </h2>
       <nuxt-link
         class="link"
@@ -21,6 +21,18 @@ import VmxLogo from '~/components/index/Logo';
 export default {
   components: {
     VmxLogo
+  },
+  props: {
+    error: {
+      type: Object,
+      default: null,
+    },
+  },
+  computed: {
+    text() {
+      const statusCode = (this.error && this.error.statusCode) || 500;
+      return statusCode === 404 ? `${statusCode} NOT FOUND` : `${statusCode} SERVER ERROR`;
+    }
   }
 };
 </script>
