@@ -24,6 +24,6 @@ export const getViewImagePath = ({fields}) => {
 
 export const actions = {
   async nuxtServerInit({dispatch}) {
-    dispatch('copyright/fetch');
+    await dispatch('copyright/fetch');
   }
 };
