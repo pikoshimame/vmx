@@ -102,6 +102,7 @@ export default {
     margin-bottom: 100px;
   }
 }
+
 .close {
   position: absolute;
   right: 10px;
@@ -109,16 +110,19 @@ export default {
   width: 23px;
   height: 23px;
 }
+
 .name {
   color: #148dd3;
   font-size: 3.2rem;
   font-weight: bold;
 }
+
 .credit {
   font-size: 1.6rem;
   font-style: italic;
   margin-top: 10px;
 }
+
 .img {
   margin-top: 30px;
 
@@ -127,6 +131,7 @@ export default {
     margin: auto;
   }
 }
+
 .profile {
   font-size: 1.8rem;
   line-height: 1.5em;
@@ -138,6 +143,7 @@ export default {
     }
   }
 }
+
 .links {
   display: flex;
   justify-content: flex-start;

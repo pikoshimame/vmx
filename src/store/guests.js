@@ -42,7 +42,7 @@ export const actions = {
   async fetch({commit}) {
     try {
       const config = {
-        content_type: 'guest',
+        content_type: 'guests',
         order: 'fields.displayOrder'
       };
       const response = await client.getEntries(config);
