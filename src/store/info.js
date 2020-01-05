@@ -1,19 +1,27 @@
-import contentful from '~/plugins/contentful';
-const client = contentful.createClient();
+import {client} from './';
 
 export const state = () => ({
-  date: '',
-  time: '',
-  datetime: '',
-  link: ''
+  fields: {}
 });
 
+export const getters = {
+  viewModel({fields}) {
+    const date = fields.date || '';
+    const time = fields.time || '';
+    const datetime = fields.datetime || '';
+    const link = fields.link || '';
+    return {
+      date,
+      time,
+      datetime,
+      link
+    };
+  }
+};
+
 export const mutations = {
-  setInfo(state, {date, time, datetime, link}) {
-    state.date = date;
-    state.time = time;
-    state.datetime = datetime;
-    state.link = link;
+  setFields(state, fields) {
+    state.fields = fields;
   }
 };
 
@@ -22,18 +30,11 @@ export const actions = {
     try {
       const config = {
         content_type: 'info',
-        order: '-fields.datetime'
+        order: '-fields.datetime',
+        limit: 1
       };
       const response = await client.getEntries(config);
-      const info = response.items.map((entry) => {
-        return {
-          date: entry.fields['date'],
-          time: entry.fields['time'],
-          datetime: entry.fields['datetime'],
-          link: entry.fields['link']
-        };
-      })[0];
-      commit('setInfo', info);
+      commit('setFields', response.items[0].fields);
     } catch (e) {
       console.error(e);
     }

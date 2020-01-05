@@ -70,13 +70,13 @@ export default {
   },
   computed: {
     info() {
-      return this.$store.state.info;
+      return this.$store.getters['info/viewModel'];
     },
     guests() {
-      return this.$store.getters['guests/listHtml'];
+      return this.$store.getters['guests/viewModel'].list;
     },
     twitter() {
-      return this.$store.state.socialMedia.twitter;
+      return this.$store.getters['socialMedia/viewModel'].twitter;
     }
   },
   head() {

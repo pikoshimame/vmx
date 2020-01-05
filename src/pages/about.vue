@@ -7,9 +7,9 @@
           About
         </h2>
         <div
-          v-if="about"
+          v-if="text"
           class="text"
-          v-html="about"
+          v-html="text"
         />
       </section>
     </main>
@@ -22,8 +22,8 @@ export default {
     await store.dispatch('about/fetch');
   },
   computed: {
-    about() {
-      return this.$store.getters['about/textHtml'];
+    text() {
+      return this.$store.getters['about/viewModel'].text;
     }
   },
   head() {

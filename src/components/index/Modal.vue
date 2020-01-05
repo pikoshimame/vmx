@@ -22,12 +22,11 @@
         v-html="guest.credit"
       />
       <p
-        v-if="guest.image.fields"
         class="img"
       >
         <img
-          :src="getHalfSizeUrl(guest.image.fields.file)"
-          :srcset="`${getHalfSizeUrl(guest.image.fields.file)} 1x, ${guest.image.fields.file.url} 2x`"
+          :src="guest.image.x1"
+          :srcset="`${guest.image.x1} 1x, ${guest.image.x2} 2x`"
           :alt="guest.name"
         >
       </p>
@@ -83,11 +82,6 @@ export default {
     modalName: {
       type: String,
       required: true
-    }
-  },
-  methods: {
-    getHalfSizeUrl(file) {
-      return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
     }
   }
 };

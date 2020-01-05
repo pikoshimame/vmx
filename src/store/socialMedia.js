@@ -1,13 +1,21 @@
-import contentful from '~/plugins/contentful';
-const client = contentful.createClient();
+import {client} from './';
 
 export const state = () => ({
-  twitter: ''
+  fields: {}
 });
 
+export const getters = {
+  viewModel({fields}) {
+    const twitter = fields.twitter || '';
+    return {
+      twitter
+    };
+  }
+};
+
 export const mutations = {
-  setSocialMedia(state, {twitter}) {
-    state.twitter = twitter;
+  setFields(state, fields) {
+    state.fields = fields;
   }
 };
 
@@ -16,15 +24,11 @@ export const actions = {
     try {
       const config = {
         content_type: 'socialMedia',
-        order: 'fields.twitter'
+        order: 'fields.twitter',
+        limit: 1
       };
       const response = await client.getEntries(config);
-      const socialMedia = response.items.map((entry) => {
-        return {
-          twitter: entry.fields['twitter']
-        };
-      })[0];
-      commit('setSocialMedia', socialMedia);
+      commit('setFields', response.items[0].fields);
     } catch (e) {
       console.error(e);
     }

@@ -15,12 +15,11 @@
       <div class="inner">
         <div class="inner__item inner__item--left">
           <p
-            v-if="resident.image.fields"
             class="img"
           >
             <img
-              :src="getHalfSizeUrl(resident.image.fields.file)"
-              :srcset="`${getHalfSizeUrl(resident.image.fields.file)} 1x, ${resident.image.fields.file.url} 2x`"
+              :src="resident.image.x1"
+              :srcset="`${resident.image.x1} 1x, ${resident.image.x2} 2x`"
               :alt="resident.name"
             >
           </p>

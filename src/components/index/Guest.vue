@@ -5,26 +5,24 @@
       <ul>
         <li
           v-for="(guest, index) in guests"
-          :key="guest.displayOrder"
+          :key="index"
         >
           <button
             class="btn"
             @click="$modal.show(`${modalKey}${index}`)"
           >
             <span
-              v-if="guest.thumbnail.fields"
               class="thumb"
             ><img
-              :src="getHalfSizeUrl(guest.thumbnail.fields.file)"
-              :srcset="`${getHalfSizeUrl(guest.thumbnail.fields.file)} 1x, ${guest.thumbnail.fields.file.url} 2x`"
+              :src="guest.thumbnail.x1"
+              :srcset="`${guest.thumbnail.x1} 1x, ${guest.thumbnail.x2} 2x`"
               :alt="guest.name"
             ></span>
             <span
-              v-if="guest.thumbnail.fields"
               class="thumb thumb--on"
             ><img
-              :src="getHalfSizeUrl(guest.thumbnail.fields.file)"
-              :srcset="`${getHalfSizeUrl(guest.thumbnail.fields.file)} 1x, ${guest.thumbnail.fields.file.url} 2x`"
+              :src="guest.thumbnail.x1"
+              :srcset="`${guest.thumbnail.x1} 1x, ${guest.thumbnail.x2} 2x`"
               :alt="guest.name"
             ></span>
             <span class="name">{{ guest.name }}</span>
@@ -56,11 +54,6 @@ export default {
     return {
       modalKey: 'guest-'
     };
-  },
-  methods: {
-    getHalfSizeUrl(file) {
-      return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
-    }
   }
 };
 </script>

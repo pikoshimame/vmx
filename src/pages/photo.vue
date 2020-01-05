@@ -9,30 +9,26 @@
           v-if="photos"
           class="photos"
         >
-          <template
+          <li
             v-for="(photo, index) in photos"
+            :key="index"
+            class="photos__item"
           >
-            <li
-              v-if="photo.fields"
-              :key="photo.fields.title"
-              class="photos__item"
+            <button
+              class="btn"
+              @click="$modal.show(`${modalKey}${index}`)"
             >
-              <button
-                class="btn"
-                @click="$modal.show(`${modalKey}${index}`)"
+              <img
+                :src="photo.thumbnail.x1"
+                :srcset="`${photo.thumbnail.x1} 1x, ${photo.thumbnail.x2} 2x`"
+                alt=""
               >
-                <img
-                  :src="getThumbnailHalfSizeUrl(photo.fields.file)"
-                  :srcset="`${getThumbnailHalfSizeUrl(photo.fields.file)} 1x, ${getThumbnailSizeUrl(photo.fields.file)} 2x`"
-                  alt=""
-                >
-              </button>
-              <vmx-modal
-                :file="photo.fields.file"
-                :modal-name="`${modalKey}${index}`"
-              />
-            </li>
-          </template>
+            </button>
+            <vmx-modal
+              :photo="photo"
+              :modal-name="`${modalKey}${index}`"
+            />
+          </li>
         </ul>
       </section>
     </main>
@@ -56,15 +52,7 @@ export default {
   },
   computed: {
     photos() {
-      return this.$store.state.photo.list;
-    }
-  },
-  methods: {
-    getThumbnailSizeUrl(file) {
-      return `${file.url}?fit=thumb&w=300&h=300`;
-    },
-    getThumbnailHalfSizeUrl(file) {
-      return `${file.url}?fit=thumb&w=150&h=150`;
+      return this.$store.getters['photo/viewModel'].list;
     }
   }
 };

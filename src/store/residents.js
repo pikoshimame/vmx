@@ -1,40 +1,43 @@
-import contentful from '~/plugins/contentful';
-import MarkdownIt from 'markdown-it';
-const client = contentful.createClient();
-const md = new MarkdownIt({
-  html: true,
-  breaks: true,
-  linkify: true
-});
+import {client, md, getViewImagePath} from './';
 
 export const state = () => ({
-  djs: [],
-  vjs: []
+  items: []
 });
 
 export const getters = {
-  djsHtml({djs}) {
-    return djs.map((entry) => {
+  viewModel({items}) {
+    const getViewModel = (fields) => {
+      const name = fields.name || '';
+      const credit = fields.credit || '';
+      const profile = fields.profile || '';
+      const twitter = fields.twitter || '';
+      const soundcloud = fields.soundcloud || '';
+      const website = fields.website || '';
+      const thumbnail = fields.thumbnail || {};
+      const image = fields.image || {};
       return {
-        ...entry,
-        profile: md.render(entry.profile)
+        name,
+        credit,
+        profile: md.render(profile),
+        twitter,
+        soundcloud,
+        website,
+        thumbnail: getViewImagePath(thumbnail),
+        image: getViewImagePath(image)
       };
-    });
-  },
-  vjsHtml({vjs}) {
-    return vjs.map((entry) => {
-      return {
-        ...entry,
-        profile: md.render(entry.profile)
-      };
-    });
+    };
+    const djs = items.filter((fields) => fields.part === 'DJ');
+    const vjs = items.filter((fields) => fields.part === 'VJ');
+    return {
+      djs: djs.map(getViewModel),
+      vjs: vjs.map(getViewModel)
+    };
   }
 };
 
 export const mutations = {
-  setResidents(state, {djs, vjs}) {
-    state.djs = djs;
-    state.vjs = vjs;
+  setItems(state, items) {
+    state.items = items;
   }
 };
 
@@ -46,15 +49,10 @@ export const actions = {
         order: 'fields.displayOrder'
       };
       const response = await client.getEntries(config);
-      const residents = response.items.reduce((accumulator, currentValue) => {
-        if (currentValue.fields['part'] === 'DJ') {
-          accumulator.djs.push(currentValue.fields);
-        } else if (currentValue.fields['part'] === 'VJ') {
-          accumulator.vjs.push(currentValue.fields);
-        }
-        return accumulator;
-      }, {djs: [], vjs: []});
-      commit('setResidents', residents);
+      const items = response.items.map((entry) => {
+        return entry.fields;
+      });
+      commit('setItems', items);
     } catch (e) {
       console.error(e);
     }

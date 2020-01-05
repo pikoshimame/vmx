@@ -1,30 +1,40 @@
-import contentful from '~/plugins/contentful';
-import MarkdownIt from 'markdown-it';
-const client = contentful.createClient();
-const md = new MarkdownIt({
-  html: true,
-  breaks: true,
-  linkify: true
-});
+import {client, md, getViewImagePath} from './';
 
 export const state = () => ({
-  list: []
+  items: []
 });
 
 export const getters = {
-  listHtml({list}) {
-    return list.map((entry) => {
+  viewModel({items}) {
+    const list = items.map((fields) => {
+      const name = fields.name || '';
+      const credit = fields.credit || '';
+      const profile = fields.profile || '';
+      const twitter = fields.twitter || '';
+      const soundcloud = fields.soundcloud || '';
+      const website = fields.website || '';
+      const thumbnail = fields.thumbnail || {};
+      const image = fields.image || {};
       return {
-        ...entry,
-        profile: md.render(entry.profile)
+        name,
+        credit,
+        profile: md.render(profile),
+        twitter,
+        soundcloud,
+        website,
+        thumbnail: getViewImagePath(thumbnail),
+        image: getViewImagePath(image)
       };
     });
+    return {
+      list
+    };
   }
 };
 
 export const mutations = {
-  setList(state, list) {
-    state.list = list;
+  setItems(state, items) {
+    state.items = items;
   }
 };
 
@@ -36,10 +46,10 @@ export const actions = {
         order: 'fields.displayOrder'
       };
       const response = await client.getEntries(config);
-      const list = response.items.map((entry) => {
+      const items = response.items.map((entry) => {
         return entry.fields;
       });
-      commit('setList', list);
+      commit('setItems', items);
     } catch (e) {
       console.error(e);
     }

@@ -5,7 +5,7 @@
       <ul class="residents">
         <li
           v-for="(resident, index) in residents"
-          :key="resident.displayOrder"
+          :key="resident.index"
           class="residents__item"
         >
           <button
@@ -13,19 +13,17 @@
             @click="$modal.show(`${modalKey}${index}`)"
           >
             <span
-              v-if="resident.thumbnail.fields"
               class="thumb"
             ><img
-              :src="getHalfSizeUrl(resident.thumbnail.fields.file)"
-              :srcset="`${getHalfSizeUrl(resident.thumbnail.fields.file)} 1x, ${resident.thumbnail.fields.file.url} 2x`"
+              :src="resident.thumbnail.x1"
+              :srcset="`${resident.thumbnail.x1} 1x, ${resident.thumbnail.x2} 2x`"
               :alt="resident.name"
             ></span>
             <span
-              v-if="resident.thumbnail.fields"
               class="thumb thumb--on"
             ><img
-              :src="getHalfSizeUrl(resident.thumbnail.fields.file)"
-              :srcset="`${getHalfSizeUrl(resident.thumbnail.fields.file)} 1x, ${resident.thumbnail.fields.file.url} 2x`"
+              :src="resident.thumbnail.x1"
+              :srcset="`${resident.thumbnail.x1} 1x, ${resident.thumbnail.x2} 2x`"
               :alt="resident.name"
             ></span>
             <span class="name">{{ resident.name }}</span>
@@ -55,11 +53,6 @@ export default {
     modalKey: {
       type: String,
       required: true
-    }
-  },
-  methods: {
-    getHalfSizeUrl(file) {
-      return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
     }
   }
 };

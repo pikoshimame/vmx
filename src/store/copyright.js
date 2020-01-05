@@ -1,14 +1,16 @@
-import {client, md} from './';
+import {client} from './';
 
 export const state = () => ({
-  fields: {}
+  fields: {
+    text: 'Copyright VOCALOID-ManiaX'
+  }
 });
 
 export const getters = {
   viewModel({fields}) {
     const text = fields.text || '';
     return {
-      text: md.render(text)
+      text
     };
   }
 };
@@ -23,7 +25,8 @@ export const actions = {
   async fetch({commit}) {
     try {
       const config = {
-        content_type: 'about',
+        content_type: 'copyright',
+        order: '-fields.copyright',
         limit: 1
       };
       const response = await client.getEntries(config);

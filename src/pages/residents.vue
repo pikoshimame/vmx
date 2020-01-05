@@ -6,8 +6,8 @@
           Residents
         </h2>
         <vmx-resident
-          v-if="djs.length"
-          :residents="djs"
+          v-if="residents.djs.length"
+          :residents="residents.djs"
           :modal-key="'dj-'"
         >
           <h3 class="titleSub">
@@ -15,8 +15,8 @@
           </h3>
         </vmx-resident>
         <vmx-resident
-          v-if="vjs.length"
-          :residents="vjs"
+          v-if="residents.vjs.length"
+          :residents="residents.vjs"
           :modal-key="'vj-'"
         >
           <h3 class="titleSub">
@@ -39,13 +39,10 @@ export default {
     await store.dispatch('residents/fetch');
   },
   computed: {
-    djs() {
-      return this.$store.getters['residents/djsHtml'];
-    },
-    vjs() {
-      return this.$store.getters['residents/vjsHtml'];
+    residents() {
+      return this.$store.getters['residents/viewModel'];
     }
-  },
+  }
 };
 </script>
 
