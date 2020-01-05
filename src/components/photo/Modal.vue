@@ -1,8 +1,23 @@
 <template>
   <div>
-    <modal class="modal" :name="modalName" :width="Math.floor(file.details.image.width / 2)" :height="Math.floor(file.details.image.height / 2)" :scrollable="true">
-      <button-close class="close" :name="modalName" />
-      <p class="img"><img :src="getHalfSizeUrl(file)" :srcset="`${getHalfSizeUrl(file)} 1x, ${file.url} 2x`" alt=""/></p>
+    <modal
+      class="modal"
+      :name="modalName"
+      :width="photo.size.width"
+      :height="photo.size.height"
+      :scrollable="true"
+    >
+      <button-close
+        class="close"
+        :name="modalName"
+      />
+      <p class="img">
+        <img
+          :src="photo.image.x1"
+          :srcset="`${photo.image.x1} 1x, ${photo.image.x2} 2x`"
+          alt=""
+        >
+      </p>
     </modal>
   </div>
 </template>
@@ -11,14 +26,20 @@
 import ButtonClose from '~/components/common/button/Close';
 
 export default {
-  props: ['file', 'modalName'],
-  components: { ButtonClose },
-  methods: {
-    getHalfSizeUrl(file) {
-      return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
+  components: {
+    ButtonClose
+  },
+  props: {
+    photo: {
+      type: Object,
+      required: true
+    },
+    modalName: {
+      type: String,
+      required: true
     }
   }
-}
+};
 </script>
 
 <style scoped>

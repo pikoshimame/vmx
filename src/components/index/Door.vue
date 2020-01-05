@@ -1,18 +1,30 @@
 <template>
   <div>
     <section class="door">
-      <slot/>
+      <slot />
       <dl class="price">
         <dt>通常</dt>
         <dd>2,500yen (1drink)</dd>
-        <dt class="small">フライヤー割引<br>Twitter割引</dt>
+        <dt class="small">
+          フライヤー割引<br>Twitter割引
+        </dt>
         <dd>2,000yen (1drink)</dd>
         <dt>未成年割引</dt>
         <dd>1,500yen (1drink)</dd>
       </dl>
       <ul class="notes">
-        <li>成年・未成年に限らず “必ず”身分証をお持ち下さい。</li>
-        <li>Twitter割引は<a class="link" v-if="link" :href="link" target="_blank">MOGRAページ</a><span v-else>MOGRAページ</span>からツイートして当日受付でお見せ下さい。</li>
+        <li>
+          <span>成年・未成年に限らず “必ず”身分証をお持ち下さい。</span>
+        </li>
+        <li>
+          <span>Twitter割引は<a
+            v-if="link"
+            class="link"
+            :href="link"
+            target="_blank"
+            rel="noopener"
+          >MOGRAページ</a><span v-else>MOGRAページ</span>からツイートして当日受付でお見せ下さい。</span>
+        </li>
       </ul>
     </section>
   </div>
@@ -20,8 +32,13 @@
 
 <script>
 export default {
-  props: ['link']
-}
+  props: {
+    link: {
+      type: String,
+      required: true
+    }
+  }
+};
 </script>
 
 <style scoped>

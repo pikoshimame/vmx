@@ -1,13 +1,22 @@
 <template>
-  <a :href="link" target="_blank">
-    <slot/>
+  <a
+    :href="link"
+    target="_blank"
+    rel="noopener"
+  >
+    <slot />
   </a>
 </template>
 
 <script>
 export default {
-  props: ['link']
-}
+  props: {
+    link: {
+      type: String,
+      required: true
+    }
+  }
+};
 </script>
 
 

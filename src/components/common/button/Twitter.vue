@@ -1,6 +1,9 @@
 <template>
-  <link-base class="link" :link="link">
-    <icon-twitter class="icon"/>
+  <link-base
+    class="link"
+    :link="link"
+  >
+    <icon-twitter class="icon" />
   </link-base>
 </template>
 
@@ -9,9 +12,17 @@ import LinkBase from '~/components/common/button/LinkBase';
 import IconTwitter from '~/components/common/icon/Twitter';
 
 export default {
-  props: ['link'],
-  components: { LinkBase, IconTwitter }
-}
+  components: {
+    LinkBase,
+    IconTwitter
+  },
+  props: {
+    link: {
+      type: String,
+      required: true
+    }
+  }
+};
 </script>
 
 <style scoped>

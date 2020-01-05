@@ -1,7 +1,7 @@
 <template>
   <div>
     <footer class="footer">
-      <small class="copyright">{{ copyright }}</small>
+      <small class="copyright">{{ text }}</small>
     </footer>
   </div>
 </template>
@@ -9,7 +9,9 @@
 <script>
 export default {
   computed: {
-    copyright() { return this.$store.state.copyright; }
+    text() {
+      return this.$store.getters['copyright/viewModel'].text;
+    }
   }
 };
 </script>

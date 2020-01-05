@@ -1,22 +1,29 @@
 import contentful from '~/plugins/contentful';
-const client = contentful.createClient();
+import MarkdownIt from 'markdown-it';
 
-export const state = () => ({
-  copyright: 'Copyright VOCALOID-ManiaX'
+export const client = contentful.createClient();
+
+export const md = new MarkdownIt({
+  html: true,
+  breaks: true,
+  linkify: true
 });
 
-export const mutations = {
-  setCopyright (state, copyright) {
-    state.copyright = copyright;
+export const getViewImagePath = ({fields}) => {
+  if (fields === undefined) {
+    return {
+      x1: '',
+      x2: ''
+    };
   }
+  return {
+    x1: `${fields.file.url}?w=${Math.floor(fields.file.details.image.width / 2)}`,
+    x2: fields.file.url
+  };
 };
 
 export const actions = {
-  async nuxtServerInit({ commit }) {
-    const response = await client.getEntries({ content_type: 'copyright', order: '-fields.copyright' });
-    const copyright = response.items.map(entry => {
-      return entry.fields['copyright'];
-    })[0];
-    if (copyright) { commit('setCopyright', copyright); }
+  async nuxtServerInit({dispatch}) {
+    dispatch('copyright/fetch');
   }
 };

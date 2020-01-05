@@ -1,20 +1,60 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div>
-    <modal class="modal" :name="modalName" :width="600" :height="'auto'" :scrollable="true">
-      <button-close class="close" :name="modalName" />
-      <p class="name" v-html="guest.name"/>
-      <p class="credit" v-if="guest.credit" v-html="guest.credit"/>
-      <p class="img" v-if="guest.image.fields"><img :src="getHalfSizeUrl(guest.image.fields.file)" :srcset="`${getHalfSizeUrl(guest.image.fields.file)} 1x, ${guest.image.fields.file.url} 2x`" :alt="guest.name"/></p>
-      <p class="profile" v-html="guest.prifile"/>
-      <ul class="links" v-if="guest.website || guest.soundcloud || guest.twitter">
-        <li class="links__item" v-if="guest.twitter">
-          <button-twitter :link="guest.twitter"/>
+    <modal
+      class="modal"
+      :name="modalName"
+      :width="600"
+      :height="'auto'"
+      :scrollable="true"
+    >
+      <button-close
+        class="close"
+        :name="modalName"
+      />
+      <p
+        class="name"
+        v-html="guest.name"
+      />
+      <p
+        v-if="guest.credit"
+        class="credit"
+        v-html="guest.credit"
+      />
+      <p
+        class="img"
+      >
+        <img
+          :src="guest.image.x1"
+          :srcset="`${guest.image.x1} 1x, ${guest.image.x2} 2x`"
+          :alt="guest.name"
+        >
+      </p>
+      <div
+        class="profile"
+        v-html="guest.profile"
+      />
+      <ul
+        v-if="guest.website || guest.soundcloud || guest.twitter"
+        class="links"
+      >
+        <li
+          v-if="guest.twitter"
+          class="links__item"
+        >
+          <button-twitter :link="guest.twitter" />
         </li>
-        <li class="links__item" v-if="guest.soundcloud">
-          <button-soundcloud :link="guest.soundcloud"/>
+        <li
+          v-if="guest.soundcloud"
+          class="links__item"
+        >
+          <button-soundcloud :link="guest.soundcloud" />
         </li>
-        <li class="links__item" v-if="guest.website">
-          <button-website :link="guest.website"/>
+        <li
+          v-if="guest.website"
+          class="links__item"
+        >
+          <button-website :link="guest.website" />
         </li>
       </ul>
     </modal>
@@ -28,27 +68,39 @@ import ButtonSoundcloud from '~/components/common/button/Soundcloud';
 import ButtonTwitter from '~/components/common/button/Twitter';
 
 export default {
-  props: ['guest', 'modalName'],
-  components: { ButtonClose, ButtonWebsite, ButtonSoundcloud, ButtonTwitter },
-  methods: {
-    getHalfSizeUrl(file) {
-      return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
+  components: {
+    ButtonClose,
+    ButtonWebsite,
+    ButtonSoundcloud,
+    ButtonTwitter
+  },
+  props: {
+    guest: {
+      type: Object,
+      required: true
+    },
+    modalName: {
+      type: String,
+      required: true
     }
   }
-}
+};
 </script>
 
-<style scoped>
-.modal.v--modal-overlay {
-  background-color: rgba(0, 0, 0, .42);
-}
-.modal >>> .v--modal {
-  position: relative;
-  border-radius: 4px;
-  color: #575757;
-  padding: 40px 30px 30px;
-  box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
-  margin-bottom: 100px;
+<style lang="scss" scoped>
+.modal {
+  &.v--modal-overlay {
+    background-color: rgba(0, 0, 0, .42);
+  }
+
+  /deep/ .v--modal {
+    position: relative;
+    border-radius: 4px;
+    color: #575757;
+    padding: 40px 30px 30px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
+    margin-bottom: 100px;
+  }
 }
 .close {
   position: absolute;
@@ -63,28 +115,36 @@ export default {
   font-weight: bold;
 }
 .credit {
-	font-size: 1.6rem;
-	font-style: italic;
+  font-size: 1.6rem;
+  font-style: italic;
   margin-top: 10px;
 }
 .img {
   margin-top: 30px;
-}
-.img >>> img {
-  display: block;
-  margin: auto;
+
+  /deep/ img {
+    display: block;
+    margin: auto;
+  }
 }
 .profile {
   font-size: 1.8rem;
   line-height: 1.5em;
   margin-top: 40px;
+
+  /deep/ p {
+    & + p {
+      padding-top: 1.5em;
+    }
+  }
 }
 .links {
   display: flex;
   justify-content: flex-start;
   margin-top: 30px;
-}
-.links__item {
-  padding-right: 34px;
+
+  &__item {
+    padding-right: 34px;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <button @click="$modal.hide(name)">
-    <icon-close class="close__icon"/>
+    <icon-close class="close__icon" />
   </button>
 </template>
 
@@ -8,9 +8,16 @@
 import IconClose from '~/components/common/icon/Close';
 
 export default {
-  props: ['name'],
-  components: { IconClose }
-}
+  components: {
+    IconClose
+  },
+  props: {
+    name: {
+      type: String,
+      required: true
+    }
+  }
+};
 </script>
 
 <style scoped>

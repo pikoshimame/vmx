@@ -1,37 +1,42 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div>
     <main class="main">
       <section>
-        <h2 class="title">About</h2>
-        <p class="text" v-if="about" v-html="about"/>
+        <h2 class="title">
+          About
+        </h2>
+        <div
+          v-if="text"
+          class="text"
+          v-html="text"
+        />
       </section>
     </main>
   </div>
 </template>
 
 <script>
-import contentful from '~/plugins/contentful';
-const client = contentful.createClient();
-
 export default {
-  layout: 'illust',
-  data() {
-    return {
-      about: ''
-    };
+  async fetch({store}) {
+    await store.dispatch('about/fetch');
   },
-  async asyncData(context) {
-    const abouts = await client.getEntries({ content_type: 'about' });
+  computed: {
+    text() {
+      return this.$store.getters['about/viewModel'].text;
+    }
+  },
+  head() {
     return {
-      about: abouts.items.map(entry => {
-        return entry.fields['text'];
-      })[0]
+      bodyAttrs: {
+        class: 'illust'
+      }
     };
   }
-}
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   width: 540px;
   margin: auto;
@@ -44,5 +49,11 @@ export default {
 .text {
   font-size: 1.8rem;
   line-height: 1.7em;
+
+  /deep/ p {
+    & + p {
+      padding-top: 1.7em;
+    }
+  }
 }
 </style>

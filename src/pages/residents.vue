@@ -2,12 +2,26 @@
   <div>
     <main class="main">
       <section>
-        <h2 class="titleMain">Residents</h2>
-        <vmx-resident v-if="djs.length" :residents="djs" :modalKey="'dj-'">
-          <h3 class="titleSub">DJ</h3>
+        <h2 class="titleMain">
+          Residents
+        </h2>
+        <vmx-resident
+          v-if="residents.djs.length"
+          :residents="residents.djs"
+          :modal-key="'dj-'"
+        >
+          <h3 class="titleSub">
+            DJ
+          </h3>
         </vmx-resident>
-        <vmx-resident v-if="vjs.length" :residents="vjs" :modalKey="'vj-'">
-          <h3 class="titleSub">VJ</h3>
+        <vmx-resident
+          v-if="residents.vjs.length"
+          :residents="residents.vjs"
+          :modal-key="'vj-'"
+        >
+          <h3 class="titleSub">
+            VJ
+          </h3>
         </vmx-resident>
       </section>
     </main>
@@ -16,31 +30,20 @@
 
 <script>
 import VmxResident from '~/components/residents/Resident';
-import contentful from '~/plugins/contentful';
-const client = contentful.createClient();
 
 export default {
-  components: { VmxResident },
-  data() {
-    return {
-      djs: [],
-      vjs: []
-    };
+  components: {
+    VmxResident
   },
-  async asyncData(context) {
-    const residents = await client.getEntries({ content_type: 'residents', order: 'fields.displayOrder' });
-    const djs = [];
-    const vjs = [];
-    residents.items.forEach(entry => {
-      if (entry.fields['part'] === 'DJ') {
-        djs.push(entry.fields);
-      } else if (entry.fields['part'] === 'VJ') {
-        vjs.push(entry.fields);
-      }
-    });
-    return { djs, vjs };
+  async fetch({store}) {
+    await store.dispatch('residents/fetch');
+  },
+  computed: {
+    residents() {
+      return this.$store.getters['residents/viewModel'];
+    }
   }
-}
+};
 </script>
 
 <style scoped>

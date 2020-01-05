@@ -2,13 +2,32 @@
   <div>
     <main class="main">
       <section>
-        <h2 class="title">Photo</h2>
-        <ul class="photos" v-if="photos">
-          <li class="photos__item" v-if="photo.fields" v-for="(photo, index) in photos" :key="photo.fields.title">
-            <button class="btn" @click="$modal.show(`${modalKey}${index}`)">
-              <img :src="getThumbnailHalfSizeUrl(photo.fields.file)" :srcset="`${getThumbnailHalfSizeUrl(photo.fields.file)} 1x, ${getThumbnailSizeUrl(photo.fields.file)} 2x`" alt=""/>
+        <h2 class="title">
+          Photo
+        </h2>
+        <ul
+          v-if="photos"
+          class="photos"
+        >
+          <li
+            v-for="(photo, index) in photos"
+            :key="index"
+            class="photos__item"
+          >
+            <button
+              class="btn"
+              @click="$modal.show(`${modalKey}${index}`)"
+            >
+              <img
+                :src="photo.thumbnail.x1"
+                :srcset="`${photo.thumbnail.x1} 1x, ${photo.thumbnail.x2} 2x`"
+                alt=""
+              >
             </button>
-            <vmx-modal :file="photo.fields.file" :modalName="`${modalKey}${index}`"/>
+            <vmx-modal
+              :photo="photo"
+              :modal-name="`${modalKey}${index}`"
+            />
           </li>
         </ul>
       </section>
@@ -18,34 +37,25 @@
 
 <script>
 import VmxModal from '~/components/photo/Modal';
-import contentful from '~/plugins/contentful';
-const client = contentful.createClient();
 
 export default {
-  components: { VmxModal },
+  components: {
+    VmxModal
+  },
+  async fetch({store}) {
+    await store.dispatch('photo/fetch');
+  },
   data() {
     return {
-      photos: [],
       modalKey: 'photo-'
-    }
-  },
-  async asyncData(context) {
-    const photos = await client.getEntries({ content_type: 'photo', order: 'fields.name' });
-    return {
-      photos: photos.items.map(entry => {
-        return entry.fields.image;
-      })[0]
     };
   },
-  methods: {
-    getThumbnailSizeUrl(file) {
-      return `${file.url}?fit=thumb&w=300&h=300`;
-    },
-    getThumbnailHalfSizeUrl(file) {
-      return `${file.url}?fit=thumb&w=150&h=150`;
+  computed: {
+    photos() {
+      return this.$store.getters['photo/viewModel'].list;
     }
   }
-}
+};
 </script>
 
 <style scoped>

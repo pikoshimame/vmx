@@ -1,15 +1,36 @@
 <template>
   <div>
     <section class="guests">
-      <slot/>
+      <slot />
       <ul>
-        <li v-for="(guest, index) in guests" :key="guest.displayOrder">
-          <button class="btn" @click="$modal.show(`${modalKey}${index}`)">
-            <span class="thumb" v-if="guest.thumbnail.fields"><img :src="getHalfSizeUrl(guest.thumbnail.fields.file)" :srcset="`${getHalfSizeUrl(guest.thumbnail.fields.file)} 1x, ${guest.thumbnail.fields.file.url} 2x`" :alt="guest.name"/></span>
-            <span class="thumb thumb--on" v-if="guest.thumbnail.fields"><img :src="getHalfSizeUrl(guest.thumbnail.fields.file)" :srcset="`${getHalfSizeUrl(guest.thumbnail.fields.file)} 1x, ${guest.thumbnail.fields.file.url} 2x`" :alt="guest.name"/></span>
+        <li
+          v-for="(guest, index) in guests"
+          :key="index"
+        >
+          <button
+            class="btn"
+            @click="$modal.show(`${modalKey}${index}`)"
+          >
+            <span
+              class="thumb"
+            ><img
+              :src="guest.thumbnail.x1"
+              :srcset="`${guest.thumbnail.x1} 1x, ${guest.thumbnail.x2} 2x`"
+              :alt="guest.name"
+            ></span>
+            <span
+              class="thumb thumb--on"
+            ><img
+              :src="guest.thumbnail.x1"
+              :srcset="`${guest.thumbnail.x1} 1x, ${guest.thumbnail.x2} 2x`"
+              :alt="guest.name"
+            ></span>
             <span class="name">{{ guest.name }}</span>
           </button>
-          <vmx-modal :guest="guest" :modalName="`${modalKey}${index}`"/>
+          <vmx-modal
+            :guest="guest"
+            :modal-name="`${modalKey}${index}`"
+          />
         </li>
       </ul>
     </section>
@@ -20,19 +41,21 @@
 import VmxModal from '~/components/index/Modal';
 
 export default {
-  props: ['guests'],
-  components: { VmxModal },
+  components: {
+    VmxModal
+  },
+  props: {
+    guests: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
       modalKey: 'guest-'
-    }
-  },
-  methods: {
-    getHalfSizeUrl(file) {
-      return `${file.url}?w=${Math.floor(file.details.image.width / 2)}`;
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
