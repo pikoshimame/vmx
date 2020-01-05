@@ -94,6 +94,7 @@ export default {
 }
 .thumb--on >>> img {
   margin-top: -100px;
+  display: block;
 }
 .name {
   position: absolute;
