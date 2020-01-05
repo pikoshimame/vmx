@@ -113,6 +113,7 @@ export default {
     margin-bottom: 100px;
   }
 }
+
 .close {
   position: absolute;
   right: 10px;
@@ -120,6 +121,7 @@ export default {
   width: 23px;
   height: 23px;
 }
+
 .inner {
   display: flex;
   justify-content: space-between;
@@ -133,22 +135,26 @@ export default {
     }
   }
 }
+
 .name {
   color: #148dd3;
   font-size: 3.2rem;
   font-weight: bold;
 }
+
 .credit {
   font-size: 1.6rem;
   font-style: italic;
   margin-top: 20px;
 }
+
 .img {
   /deep/ img {
     display: block;
     margin: auto;
   }
 }
+
 .profile {
   font-size: 1.4rem;
   line-height: 1.6em;
@@ -168,6 +174,7 @@ export default {
     }
   }
 }
+
 .links {
   display: flex;
   justify-content: flex-start;

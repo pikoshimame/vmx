@@ -42,10 +42,12 @@ export default {
   margin: auto;
   padding: 125px 0 350px;
 }
+
 .title {
   font-size: 5.7rem;
   padding-bottom: 75px;
 }
+
 .text {
   font-size: 1.8rem;
   line-height: 1.7em;
