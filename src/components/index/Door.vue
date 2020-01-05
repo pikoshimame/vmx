@@ -41,10 +41,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .door {
   padding-bottom: 90px;
 }
+
 .price {
   display: flex;
   justify-content: space-between;
@@ -54,26 +55,24 @@ export default {
   width: 500px;
   height: 210px;
   margin: auto;
+
+  > dt {
+    text-align: center;
+    width: 260px;
+    margin: 0;
+  }
+
+  > dd {
+    text-align: left;
+    width: 240px;
+    margin: 0;
+  }
+
+  > .small {
+    font-size: 1.9rem;
+  }
 }
-.price >>> dt {
-  text-align: center;
-  width: 260px;
-  margin: 0;
-}
-.price >>> dd {
-  text-align: left;
-  width: 240px;
-  margin: 0;
-}
-.price >>> .small {
-  font-size: 1.9rem;
-}
-.price >>> .description {
-  font-size: 1.2rem;
-  text-align: center;
-  width: 600px;
-  height: 12px;
-}
+
 .notes {
   font-size: 1.2rem;
   text-align: left;
@@ -82,19 +81,23 @@ export default {
   margin: auto;
   padding-left: 30px;
   box-sizing: border-box;
+
+  > li {
+    text-indent: -1.5em;
+    padding-left: 1.5em;
+
+    &::before {
+      content: "※";
+      padding-right: .5em;
+    }
+  }
 }
-.notes >>> li {
-  text-indent: -1.5em;
-  padding-left: 1.5em;
-}
-.notes >>> li::before {
-  content: "※";
-  padding-right: .5em;
-}
+
 .link {
-  color: #148dd3;
-}
-.link:hover {
-  text-decoration: none;
+  color: color(link, primary);
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 </style>

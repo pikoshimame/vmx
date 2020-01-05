@@ -16,13 +16,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .footer {
   font-family: 'Muli', sans-serif;
   font-weight: 200;
   text-align: center;
   padding: 80px 0 25px;
 }
+
 .copyright {
   font-size: 1.1rem;
 }

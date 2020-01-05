@@ -80,7 +80,7 @@ export default {
       filter: none;
     }
     > .name {
-      color: #148dd3;
+      color: color(text, primary);
     }
   }
 
@@ -110,7 +110,7 @@ export default {
       left: 0;
       top: 0;
       display: block;
-      border-top: rgba(0, 0, 0, .1) solid 1px;
+      border-top: rgba(color(border, black), .1) solid 1px;
       width: 50px;
     }
   }

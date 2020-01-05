@@ -139,7 +139,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .header {
   position: fixed;
   font-family: 'Muli', sans-serif;
@@ -148,50 +148,60 @@ export default {
   min-width: 640px;
   z-index: 1;
 }
+
 @media (min-width: 641px) {
   .header {
     min-width: 960px;
   }
 }
+
 .wrapper {
   position: absolute;
   top: 0;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(color(background, white), .6);
   width: 100%;
   height: 60px;
   transition: top .3s ease-out;
+
+  &.is-hidden {
+    top: -60px;
+  }
 }
-.wrapper.is-hidden {
-  top: -60px;
-}
+
 .inner {
   position: relative;
   width: 640px;
   margin: auto;
 }
+
 @media (min-width: 641px) {
   .inner {
     width: 960px;
   }
 }
+
 .btn {
   position: absolute;
   right: 34px;
   top: 33px;
   width: 44px;
+
+  &.is-hidden {
+    display: none;
+  }
+
+  > svg {
+    display: block;
+  }
 }
-.btn.is-hidden {
-  display: none;
-}
-.btn >>> svg {
-  display: block;
-}
+
 .text {
   display: block;
-  color: rgba(0, 0, 0, .72);
+  color: color(text, dark-gray);
   font-size: 1.4rem;
   padding-top: 8px;
 }
+
 .logo {
   position: absolute;
   left: 22px;
@@ -199,10 +209,12 @@ export default {
   width: 120px;
   height: 37px;
   margin: 0;
+
+  > svg {
+    display: block;
+  }
 }
-.logo >>> svg {
-  display: block;
-}
+
 .navi {
   position: absolute;
   right: 0;
@@ -211,9 +223,10 @@ export default {
   font-size: 1.6rem;
   height: 60px;
 }
+
 .link {
   display: block;
-  color: #575757;
+  color: color(text, dark-gray);
   text-align: center;
   text-decoration: none;
   width: 146px;

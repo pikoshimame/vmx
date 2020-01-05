@@ -25,10 +25,13 @@ export default {
 };
 </script>
 
-<style scoped>
-.link::after {
-  border-color: transparent transparent #00aced transparent;
+<style lang="scss" scoped>
+.link {
+  &::after {
+    border-color: transparent transparent color(link, twitter) transparent;
+  }
 }
+
 .icon {
   width: 36px;
   height: 29px;

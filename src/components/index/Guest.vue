@@ -57,7 +57,7 @@ export default {
 
 .btn {
   position: relative;
-  border-bottom: rgba(0, 0, 0, .1) solid 1px;
+  border-bottom: rgba(color(border, black), .1) solid 1px;
   width: 380px;
   height: 134px;
   margin: auto;
@@ -67,7 +67,7 @@ export default {
       filter: none;
     }
     > .name {
-      color: #148dd3;
+      color: color(text, primary);
     }
   }
 
@@ -99,7 +99,7 @@ export default {
       right: 0;
       border-style: solid;
       border-width: 0 0 10px 10px;
-      border-color: transparent transparent #148dd3 transparent;
+      border-color: transparent transparent color(link, primary) transparent;
       width: 0;
       height: 0;
     }

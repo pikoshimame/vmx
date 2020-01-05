@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .icon {
   width: 36px;
   height: 29px;

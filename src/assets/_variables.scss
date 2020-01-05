@@ -1,0 +1,89 @@
+$color-primary: #148dd3;
+$color-black: #000;
+$color-gray-1: #141414;
+$color-gray-5: #575757;
+$color-gray-9: #999999;
+$color-gray-10: #aeaeae;
+$color-gray-13: #d9d9d9;
+$color-white: #fff;
+$color-soundcloud: #fe4700;
+$color-twitter: #00aced;
+
+$colors: (
+  background: (
+    primary: $color-primary,
+    black: $color-black,
+    white: $color-white
+  ),
+  border: (
+    black: $color-black
+  ),
+  shadow: (
+    black: $color-black
+  ),
+  text: (
+    primary: $color-primary,
+    black: $color-gray-1,
+    dark-gray: $color-gray-5
+  ),
+  link: (
+    primary: $color-primary,
+    default: $color-gray-10,
+    soundcloud: $color-soundcloud,
+    twitter: $color-twitter
+  ),
+  icon: (
+    primary: $color-primary,
+    dark-gray: $color-gray-5,
+    light-gray: $color-gray-13,
+    white: $color-white
+  )
+);
+@function color($keys...) {
+  $map: $colors;
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+$font-primary: 'Alata', sans-serif;
+$font-secondary: 'Noto Sans JP', sans-serif;
+
+// メディアクエリ取得
+$width-extra-small: 320px;
+$width-small: 375px;
+$width-medium: 640px;
+$width-large: 1024px;
+$mq-breakpoints: (
+  'extra-small': $width-extra-small,
+  'small': $width-small,
+  'medium': $width-medium,
+  'large': $width-large,
+);
+@mixin mq($breakpoint: small) {
+  @media screen and (min-width: #{map-get($mq-breakpoints, $breakpoint)}) {
+    @content;
+  }
+}
+
+// 画像のRetina対応
+$retina: (
+  '2x': 2,
+  '3x': 3,
+);
+@mixin retina-background-image($file, $type) {
+  background-image: url($file + '.' + $type);
+  @each $key, $ratio in $retina {
+    @media (-webkit-device-pixel-ratio: #{$ratio}), (min-resolution: #{$ratio}dppx) {
+      background-image: url($file + '@' + $key + '.' + $type);
+    }
+  }
+}
+// 画像のRetina対応（指定した倍率のみ）
+@mixin retina-background-image-specified($file, $type, $ratio) {
+  background-image: url($file + '.' + $type);
+  @media (-webkit-device-pixel-ratio: #{map-get($retina, $ratio)}), (min-resolution: #{$ratio}dppx) {
+    background-image: url($file + '@' + $ratio + '.' + $type);
+  }
+}

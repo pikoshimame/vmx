@@ -46,23 +46,26 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   width: 640px;
   margin: auto;
   padding: 125px 0 0 50px;
   box-sizing: border-box;
 }
+
 @media (min-width: 641px) {
   .main {
     width: 960px;
     padding-left: 70px;
   }
 }
+
 .titleMain {
   font-size: 5.7rem;
   padding-bottom: 50px;
 }
+
 .titleSub {
   font-size: 3.0rem;
   line-height: 1.2em;

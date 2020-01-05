@@ -20,16 +20,18 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .logoWraper {
   padding: 135px 0 140px;
 }
+
 .logo {
   width: 138px;
   height: 263px;
   margin: auto;
-}
-.logo >>> svg {
-  display: block;
+
+  > svg {
+    display: block;
+  }
 }
 </style>

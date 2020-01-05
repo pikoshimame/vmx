@@ -65,13 +65,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .bg {
   position: fixed;
   left: 0;
   top: 0;
   z-index: -1;
 }
+
 .item {
   position: absolute;
   width: 0;
@@ -84,6 +85,7 @@ export default {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
 @keyframes animation {
   0% {
     transform: translate(0, 0);

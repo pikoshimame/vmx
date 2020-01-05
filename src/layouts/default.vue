@@ -21,54 +21,66 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 html {
-  color: #575757;
+  color: color(text, dark-gray);
   font-size: 10px;
   min-width: 640px;
 }
+
 @media (min-width: 641px) {
   html {
     min-width: 960px;
   }
 }
+
 body {
   font-family: Hiragino Sans, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-body.v--modal-block-scroll {
-  position: relative;
-  width: 100%;
-}
-body.illust {
-  background: url('~assets/bg.png') calc(50% + 330px) top no-repeat;
-}
-@media (min-width: 641px) {
-  body.illust {
-    background: url('~assets/bg.png') calc(50% + 490px) top no-repeat;
+
+  &.v--modal-block-scroll {
+    position: relative;
+    width: 100%;
+  }
+
+  &.illust {
+    background: url('~assets/bg.png') calc(50% + 330px) top no-repeat;
   }
 }
+
+@media (min-width: 641px) {
+  body{
+    &.illust {
+      background: url('~assets/bg.png') calc(50% + 490px) top no-repeat;
+    }
+  }
+}
+
 h2, h3 {
-  color: #148dd3;
+  color: color(text, primary);
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   line-height: 1em;
   margin: 0;
 }
+
 button {
   background: none;
   border: none;
-  color: #575757;
+  color: color(text, dark-gray);
   padding: 0;
   outline: none;
   cursor: pointer;
 }
+
 ul {
   margin: 0;
   padding: 0;
 }
+
 li {
   list-style: none;
 }
+
 p {
   margin: 0;
 }

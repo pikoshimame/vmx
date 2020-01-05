@@ -89,24 +89,28 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   text-align: center;
 }
+
 .inner {
   width: 640px;
   margin: auto;
 }
+
 @media (min-width: 641px) {
   .inner {
     width: 960px;
   }
 }
+
 .titleMain {
   font-size: 3.8rem;
   margin: 0;
   padding-bottom: 30px;
 }
+
 .titleSub {
   font-size: 2.4rem;
   padding-bottom: 9px;

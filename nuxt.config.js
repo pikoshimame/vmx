@@ -5,7 +5,7 @@ export default {
   */
   head: {
     htmlAttrs: {
-      lang: 'ja',
+      lang: 'ja'
     },
     title: 'VOCALOID-ManiaX オフィシャルサイト',
     meta: [
@@ -40,7 +40,9 @@ export default {
   /*
   ** Customize the progress bar color
   */
-  loading: {color: '#148dd3'},
+  loading: {
+    color: '#148dd3'
+  },
   /*
   ** Build configuration
   */
@@ -67,10 +69,16 @@ export default {
   modules: [
     '@nuxtjs/dotenv',
     '@nuxtjs/google-analytics',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources'
   ],
   googleAnalytics: {
     id: 'UA-75339071-1'
+  },
+  styleResources: {
+    scss: [
+      '~/assets/_variables.scss',
+    ],
   },
   workbox: {
     runtimeCaching: [

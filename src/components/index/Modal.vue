@@ -90,15 +90,15 @@ export default {
 <style lang="scss" scoped>
 .modal {
   &.v--modal-overlay {
-    background-color: rgba(0, 0, 0, .42);
+    background-color: rgba(color(background, black), .42);
   }
 
   /deep/ .v--modal {
     position: relative;
     border-radius: 4px;
-    color: #575757;
+    color: color(text, dark-gray);
     padding: 40px 30px 30px;
-    box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 4px 1px rgba(color(shadow, black), .3);
     margin-bottom: 100px;
   }
 }
@@ -112,7 +112,7 @@ export default {
 }
 
 .name {
-  color: #148dd3;
+  color: color(text, primary);
   font-size: 3.2rem;
   font-weight: bold;
 }
@@ -126,7 +126,7 @@ export default {
 .img {
   margin-top: 30px;
 
-  /deep/ img {
+  > img {
     display: block;
     margin: auto;
   }

@@ -25,10 +25,13 @@ export default {
 };
 </script>
 
-<style scoped>
-.link::after {
-  border-color: transparent transparent #fe4700 transparent;
+<style lang="scss" scoped>
+.link {
+  &::after {
+    border-color: transparent transparent color(link, soundcloud) transparent;
+  }
 }
+
 .icon {
   width: 39px;
   height: 17px;

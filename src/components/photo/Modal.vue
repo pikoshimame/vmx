@@ -42,28 +42,36 @@ export default {
 };
 </script>
 
-<style scoped>
-.modal.v--modal-overlay {
-  background-color: rgba(0, 0, 0, .8);
+<style lang="scss" scoped>
+.modal{
+  &.v--modal-overlay {
+    background-color: rgba(color(background, black), .8);
+  }
+
+  /deep/ .v--modal {
+    position: relative;
+    background-color: transparent;
+    box-shadow: 0 0 4px 1px rgba(color(shadow, black), .3);
+    overflow: visible;
+  }
 }
-.modal >>> .v--modal {
-  position: relative;
-  background-color: transparent;
-  box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
-  overflow: visible;
-}
+
 .close {
   position: absolute;
   right: 10px;
   top: -33px;
   width: 23px;
   height: 23px;
+
+  /deep/ svg {
+    color: color(icon, white);
+  }
 }
-.close >>> svg {
-  color: #fff;
-}
-.img >>> img {
-  display: block;
-  margin: auto;
+
+.img {
+  > img {
+    display: block;
+    margin: auto;
+  }
 }
 </style>

@@ -20,11 +20,13 @@ export default {
 };
 </script>
 
-<style scoped>
-.close__icon {
-  display: block;
-  color: #575757;
-  width: 23px;
-  height: 23px;
+<style lang="scss" scoped>
+.close {
+  &__icon {
+    display: block;
+    color: color(text, dark-gray);
+    width: 23px;
+    height: 23px;
+  }
 }
 </style>

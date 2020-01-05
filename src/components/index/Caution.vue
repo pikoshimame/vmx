@@ -13,14 +13,16 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
   padding-bottom: 70px;
 }
+
 .inner {
-  background-color: rgba(255, 255, 255, .6);
+  background-color: rgba(color(background, white), .6);
   padding: 15px 0;
 }
+
 .caution {
   font-size: 1.2rem;
   text-align: left;
@@ -29,17 +31,22 @@
   margin: auto;
   box-sizing: border-box;
 }
+
 @media (min-width: 641px) {
   .caution {
     width: 810px;
   }
 }
-.caution >>> li {
-  text-indent: -2.5em;
-  counter-increment: num;
-}
-.caution >>> li::before {
-  content: "※"counter(num)".";
-  padding-right: .5em;
+
+.caution{
+  > li {
+    text-indent: -2.5em;
+    counter-increment: num;
+
+    &::before {
+      content: "※"counter(num)".";
+      padding-right: .5em;
+    }
+  }
 }
 </style>

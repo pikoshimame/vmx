@@ -58,56 +58,67 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   width: 640px;
   margin: auto;
   padding: 125px 5px 60px;
   box-sizing: border-box;
 }
+
 @media (min-width: 641px) {
   .main {
     width: 960px;
   }
 }
+
 .title {
   font-size: 5.7rem;
   padding-bottom: 50px;
 }
+
 .photos {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 640px;
   margin-left: -5px;
+
+  &__item {
+    padding: 5px;
+  }
 }
+
 @media (min-width: 641px) {
   .photos {
     width: 960px;
   }
 }
-.photos__item {
-  padding: 5px;
-}
+
 .btn {
   position: relative;
-}
-.btn::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: block;
-  background-color: rgba(0, 0, 0, .5);
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity .3s ease-out;
-}
-.btn:hover::before {
-  opacity: 1;
-}
-.btn >>> img {
-  display: block;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    background-color: rgba(color(background, black), .5);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .3s ease-out;
+  }
+
+  &:hover{
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  > img {
+    display: block;
+  }
 }
 </style>
