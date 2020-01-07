@@ -1,13 +1,6 @@
-$color-primary: #148dd3;
+$color-primary: #e4ff2b;
 $color-black: #000;
-$color-gray-1: #141414;
-$color-gray-5: #575757;
-$color-gray-9: #999999;
-$color-gray-10: #aeaeae;
-$color-gray-13: #d9d9d9;
 $color-white: #fff;
-$color-soundcloud: #fe4700;
-$color-twitter: #00aced;
 
 $colors: (
   background: (
@@ -23,19 +16,20 @@ $colors: (
   ),
   text: (
     primary: $color-primary,
-    black: $color-gray-1,
-    dark-gray: $color-gray-5
+    black: $color-black,
+    dark-gray: $color-black, // FIXME: 削除
+    white: $color-white
   ),
   link: (
     primary: $color-primary,
-    default: $color-gray-10,
-    soundcloud: $color-soundcloud,
-    twitter: $color-twitter
+    default: $color-black, // FIXME: 削除
+    soundcloud: $color-black, // FIXME: 削除
+    twitter: $color-black // FIXME: 削除
   ),
   icon: (
     primary: $color-primary,
-    dark-gray: $color-gray-5,
-    light-gray: $color-gray-13,
+    dark-gray: $color-black, // FIXME: 削除
+    light-gray: $color-black, // FIXME: 削除
     white: $color-white
   )
 );

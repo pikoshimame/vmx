@@ -1,13 +1,10 @@
 <template>
-  <div>
-    <footer class="footer">
-      <small class="copyright">{{ text }}</small>
-    </footer>
-  </div>
+  <small class="text-copyright">{{ text }}</small>
 </template>
 
 <script>
 export default {
+  name: 'TextCopyright',
   computed: {
     text() {
       return this.$store.getters['copyright/viewModel'].text;
@@ -17,14 +14,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.footer {
-  font-family: 'Muli', sans-serif;
-  font-weight: 200;
-  text-align: center;
-  padding: 80px 0 25px;
-}
-
-.copyright {
-  font-size: 1.1rem;
+.text-copyright {
+  font-size: 1.2rem;
 }
 </style>

@@ -1,118 +1,105 @@
 <template>
-  <div>
-    <main class="main">
-      <div class="inner">
-        <vmx-logo />
-        <section>
-          <vmx-info
-            v-if="info"
-            :info="info"
-          >
-            <h2 class="titleMain">
-              Next
-            </h2>
-          </vmx-info>
-          <vmx-guest
-            v-if="guests.length"
-            :guests="guests"
-          >
-            <h3 class="titleSub">
-              Guests
-            </h3>
-          </vmx-guest>
-          <vmx-door
-            v-if="info"
-            :link="info.link"
-          >
-            <h3 class="titleSub">
-              Door
-            </h3>
-          </vmx-door>
-          <vmx-door v-else>
-            <h3 class="titleSub">
-              Door
-            </h3>
-          </vmx-door>
-        </section>
-      </div>
-      <vmx-caution />
-      <vmx-twitter-btn
-        v-if="twitter"
-        :twitter="twitter"
+  <div class="page-container">
+    <div class="logo-container">
+      <heading-logo />
+    </div>
+    <div class="next-container">
+      <next-contents
+        :next="next"
       />
-    </main>
+    </div>
+    <div
+      v-if="guestList !== undefined && guestList.length !== 0"
+      class="guest-container"
+    >
+      <guest-contents
+        :guest-list="guestList"
+      />
+    </div>
+    <div
+      v-if="archiveId !== undefined && archiveId !== ''"
+      class="archive-container"
+    >
+      <archive-contents
+        :archive-id="archiveId"
+      />
+    </div>
+    <div class="door-container">
+      <door-contents
+        :link="next.link"
+      />
+    </div>
+    <div class="notes-container">
+      <notes-contents />
+    </div>
+    <div class="twitter-container">
+      <twitter-contents />
+    </div>
   </div>
 </template>
 
 <script>
-import VmxLogo from '~/components/index/Logo';
-import VmxInfo from '~/components/index/Info';
-import VmxDoor from '~/components/index/Door';
-import VmxGuest from '~/components/index/Guest';
-import VmxCaution from '~/components/index/Caution';
-import VmxTwitterBtn from '~/components/index/TwitterBtn';
+import HeadingLogo from '~/components/index/HeadingLogo';
+import NextContents from '~/components/index/NextContents';
+import GuestContents from '~/components/index/GuestContents';
+import ArchiveContents from '~/components/index/ArchiveContents';
+import DoorContents from '~/components/index/DoorContents';
+import NotesContents from '~/components/index/NotesContents';
+import TwitterContents from '~/components/index/TwitterContents';
 
 export default {
   components: {
-    VmxLogo,
-    VmxInfo,
-    VmxGuest,
-    VmxDoor,
-    VmxCaution,
-    VmxTwitterBtn
+    HeadingLogo,
+    NextContents,
+    GuestContents,
+    ArchiveContents,
+    DoorContents,
+    NotesContents,
+    TwitterContents
   },
   async fetch({store}) {
     const promises = [];
     promises.push(store.dispatch('info/fetch'));
-    promises.push(store.dispatch('guests/fetch'));
-    promises.push(store.dispatch('socialMedia/fetch'));
+    promises.push(store.dispatch('guest/fetch'));
+    promises.push(store.dispatch('archive/fetch'));
     await Promise.all(promises);
   },
   computed: {
-    info() {
+    next() {
       return this.$store.getters['info/viewModel'];
     },
-    guests() {
-      return this.$store.getters['guests/viewModel'].list;
+    guestList() {
+      return this.$store.getters['guest/viewModel'].list;
     },
-    twitter() {
-      return this.$store.getters['socialMedia/viewModel'].twitter;
+    archiveId() {
+      return this.$store.getters['archive/viewModel'].id;
     }
-  },
-  head() {
-    return {
-      bodyAttrs: {
-        class: 'illust'
-      }
-    };
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.main {
-  text-align: center;
+.page-container {
+  padding-bottom: 184px;
 }
 
-.inner {
-  width: 640px;
-  margin: auto;
+.logo-container {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0 160px;
 }
 
-@media (min-width: 641px) {
-  .inner {
-    width: 960px;
-  }
+.next-container,
+.guest-container,
+.archive-container {
+  padding-bottom: 56px;
 }
 
-.titleMain {
-  font-size: 3.8rem;
-  margin: 0;
-  padding-bottom: 30px;
+.door-container {
+  padding-bottom: 32px;
 }
 
-.titleSub {
-  font-size: 2.4rem;
-  padding-bottom: 9px;
+.notes-container {
+  padding-bottom: 80px;
 }
 </style>

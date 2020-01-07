@@ -1,87 +1,79 @@
 <template>
-  <div>
-    <vmx-header />
-    <nuxt />
-    <vmx-footer />
-    <vmx-background />
+  <div class="layout-container">
+    <div class="header-container">
+      <header>
+        <global-navi />
+      </header>
+    </div>
+    <div class="main-container">
+      <main>
+        <nuxt />
+      </main>
+      <footer>
+        <text-copyright />
+      </footer>
+    </div>
+    <modal-contents />
   </div>
 </template>
 
 <script>
-import VmxHeader from '~/components/common/Header';
-import VmxFooter from '~/components/common/Footer';
-import VmxBackground from '~/components/common/Background';
+import GlobalNavi from '~/components/common/GlobalNavi';
+import TextCopyright from '~/components/common/text/Copyright';
+import ModalContents from '~/components/common/ModalContents';
 
 export default {
   components: {
-    VmxHeader,
-    VmxFooter,
-    VmxBackground
+    GlobalNavi,
+    TextCopyright,
+    ModalContents
   }
 };
 </script>
 
-<style lang="scss">
-html {
-  color: color(text, dark-gray);
-  font-size: 10px;
-  min-width: 640px;
-}
+<style lang="scss" scoped>
+.layout-container {
+  position: relative;
+  overflow: hidden;
 
-@media (min-width: 641px) {
-  html {
-    min-width: 960px;
-  }
-}
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 21px;
+    display: block;
+    background: url('~assets/images/illust.png') left top no-repeat;
+    width: 1310px;
+    height: 2334px;
+    transform: translateX(-407px);
+    z-index: -1;
 
-body {
-  font-family: Hiragino Sans, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-  &.v--modal-block-scroll {
-    position: relative;
-    width: 100%;
-  }
-
-  &.illust {
-    background: url('~assets/bg.png') calc(50% + 330px) top no-repeat;
-  }
-}
-
-@media (min-width: 641px) {
-  body{
-    &.illust {
-      background: url('~assets/bg.png') calc(50% + 490px) top no-repeat;
+    @include mq(large) {
+      transform: translateX(-177px);
     }
   }
 }
 
-h2, h3 {
-  color: color(text, primary);
-  font-family: 'Work Sans', sans-serif;
-  font-weight: 500;
-  line-height: 1em;
-  margin: 0;
+.header-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 24px 0;
+  z-index: 1;
+
+  @include mq(large) {
+    padding: 48px 48px 0;
+  }
 }
 
-button {
-  background: none;
-  border: none;
-  color: color(text, dark-gray);
-  padding: 0;
-  outline: none;
-  cursor: pointer;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
-p {
-  margin: 0;
+.main-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 120px 24px 64px;
 }
 </style>
