@@ -8,28 +8,8 @@ $colors: (
     black: $color-black,
     white: $color-white
   ),
-  border: (
-    black: $color-black
-  ),
-  shadow: (
-    black: $color-black
-  ),
   text: (
-    primary: $color-primary,
     black: $color-black,
-    dark-gray: $color-black, // FIXME: 削除
-    white: $color-white
-  ),
-  link: (
-    primary: $color-primary,
-    default: $color-black, // FIXME: 削除
-    soundcloud: $color-black, // FIXME: 削除
-    twitter: $color-black // FIXME: 削除
-  ),
-  icon: (
-    primary: $color-primary,
-    dark-gray: $color-black, // FIXME: 削除
-    light-gray: $color-black, // FIXME: 削除
     white: $color-white
   )
 );
@@ -40,9 +20,6 @@ $colors: (
   }
   @return $map;
 }
-
-$font-primary: 'Alata', sans-serif;
-$font-secondary: 'Noto Sans JP', sans-serif;
 
 // メディアクエリ取得
 $width-extra-small: 320px;
