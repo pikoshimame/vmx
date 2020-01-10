@@ -116,7 +116,7 @@ export default {
     position: relative;
     background-color: color(background, white);
     margin: 0 auto;
-    max-width: 560px;
+    max-width: 432px;
     min-width: 296px;
     padding: 32px 24px;
     pointer-events: auto;
@@ -156,7 +156,6 @@ export default {
       > img {
         display: block;
         max-width: 100%;
-        margin: 0 auto;
       }
     }
 
