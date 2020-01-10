@@ -36,6 +36,10 @@ export default {
     &::before {
       content: "※"counter(num)". ";
     }
+
+    > span {
+      background-color: rgba(color(background, primary), .8);
+    }
   }
 }
 </style>

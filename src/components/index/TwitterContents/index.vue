@@ -42,6 +42,8 @@ export default {
   }
 
   > .notes {
+    display: inline;
+    background-color: rgba(color(background, primary), .8);
     font-size: 1.3rem;
     line-height: 1.5;
 

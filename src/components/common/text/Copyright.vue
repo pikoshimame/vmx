@@ -15,6 +15,7 @@ export default {
 
 <style lang="scss" scoped>
 .text-copyright {
+  background-color: rgba(color(background, primary), .8);
   font-size: 1.2rem;
 }
 </style>
