@@ -1,26 +1,28 @@
 <template>
-  <div>
-    <section class="notfound">
-      <vmx-logo />
-      <h2 class="title">
-        {{ text }}
-      </h2>
-      <nuxt-link
-        class="link"
-        to="/"
-      >
-        トップへ
-      </nuxt-link>
-    </section>
+  <div class="page-container">
+    <div class="logo-container">
+      <heading-logo />
+    </div>
+    <h2 class="title">
+      <text-invert>{{ text }}</text-invert>
+    </h2>
+    <text-link
+      to="/"
+      text="トップへ"
+    />
   </div>
 </template>
 
 <script>
-import VmxLogo from '~/components/index/Logo';
+import HeadingLogo from '~/components/index/HeadingLogo';
+import TextInvert from '~/components/common/text/Invert';
+import TextLink from '~/components/common/text/Link';
 
 export default {
   components: {
-    VmxLogo
+    HeadingLogo,
+    TextInvert,
+    TextLink
   },
   props: {
     error: {
@@ -38,39 +40,19 @@ export default {
 </script>
 
 
-<style scoped>
-.notfound {
-  text-align: center;
+<style lang="scss" scoped>
+.page-container {
+  padding-bottom: 184px;
 }
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0 80px;
+}
+
 .title {
-  border-bottom: rgba(0, 0, 0, .18) solid 1px;
-  font-size: 3.8rem;
-  width: 480px;
-  margin: auto;
-  padding: 0 20px 10px;
-}
-.link {
-  position: relative;
-  display: inline-block;
-  color: #575757;
-  font-size: 2.1rem;
-  text-decoration: none;
-  height: 2.1rem;
-  padding: 10px 15px 0 0;
-  transition: color .3s ease-out;
-}
-.link:hover {
-  color: #148dd3;
-}
-.link::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  right: 0;
-  border-style: solid;
-  border-width: 0 0 10px 10px;
-  border-color: transparent transparent #148dd3 transparent;
-  width: 0;
-  height: 0;
+  font-size: 4.0rem;
+  padding-bottom: 16px;
 }
 </style>

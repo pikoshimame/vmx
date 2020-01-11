@@ -1,16 +1,20 @@
 export default {
   srcDir: 'src',
+  env: {
+    twitterUrl: 'https://twitter.com/club_vmx',
+    twitterHashUrl: 'https://twitter.com/search?q=%23%E3%83%9C%E3%82%AB%E3%83%9E%E3%83%8B&f=live'
+  },
   /*
   ** Headers of the page
   */
   head: {
     htmlAttrs: {
-      lang: 'ja',
+      lang: 'ja'
     },
     title: 'VOCALOID-ManiaX オフィシャルサイト',
     meta: [
       {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=640'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
       {hid: 'description', name: 'description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。'},
       {itemprop: 'name', content: 'VOCALOID-ManiaX オフィシャルサイト'},
       {itemprop: 'description', content: 'VOCALOID-ManiaX(ボーカロイドマニアクス)は、VOCALOID(ボーカロイド)が得意とするジャンルの一つである「ダンスミュージック」というジャンルを主軸にしたパーティーです。'},
@@ -35,12 +39,15 @@ export default {
     ]
   },
   css: [
-    'normalize.css'
+    'reset-css',
+    '~/assets/scss/_global.scss'
   ],
   /*
   ** Customize the progress bar color
   */
-  loading: {color: '#148dd3'},
+  loading: {
+    color: '#000'
+  },
   /*
   ** Build configuration
   */
@@ -67,10 +74,20 @@ export default {
   modules: [
     '@nuxtjs/dotenv',
     '@nuxtjs/google-analytics',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources'
   ],
   googleAnalytics: {
     id: 'UA-75339071-1'
+  },
+  styleResources: {
+    scss: [
+      '~/assets/scss/_variables.scss',
+    ],
+  },
+  router: {
+    trailingSlash: false,
+    middleware: 'redirect'
   },
   workbox: {
     runtimeCaching: [
