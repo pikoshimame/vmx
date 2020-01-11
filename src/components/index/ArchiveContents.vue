@@ -5,14 +5,10 @@
         text="ARCHIVE"
       />
     </div>
-    <div class="video-container">
-      <iframe
-        :src="`https://player.twitch.tv/?autoplay=false&video=v${archiveId}`"
-        frameborder="0"
-        allowfullscreen="true"
-        scrolling="no"
-      />
-    </div>
+    <div
+      :id="playerContainerId"
+      class="video-container"
+    />
   </div>
 </template>
 
@@ -28,6 +24,29 @@ export default {
     archiveId: {
       type: String,
       required: true
+    }
+  },
+  data() {
+    return {
+      playerContainerId: 'video-container',
+      player: null
+    };
+  },
+  mounted() {
+    const options = {
+      video: this.archiveId,
+      playsinline: false
+    };
+    this.player = new Twitch.Player(this.playerContainerId, options);
+    this.player.pause();
+    this.player.addEventListener(Twitch.Player.PLAYING, this.videoPlaying);
+  },
+  destroyed() {
+    this.player.removeEventListener(Twitch.Player.PLAYING, this.videoPlaying);
+  },
+  methods: {
+    videoPlaying() {
+      this.$ga.event('archive', 'playing');
     }
   }
 };
@@ -48,7 +67,7 @@ export default {
     padding-top: 56.25%;
   }
 
-  > iframe {
+  /deep/ iframe {
     position: absolute;
     top: 0;
     left: 0;

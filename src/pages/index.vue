@@ -74,6 +74,13 @@ export default {
     archiveId() {
       return this.$store.getters['archive/viewModel'].id;
     }
+  },
+  head() {
+    return {
+      script: [
+        {src: 'https://player.twitch.tv/js/embed/v1.js'}
+      ],
+    };
   }
 };
 </script>
