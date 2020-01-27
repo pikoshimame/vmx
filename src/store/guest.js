@@ -12,7 +12,7 @@ const getViewThumbnailPath = ({fields}) => {
   const url = fields.file.url;
   return {
     x1: `${url}?w=${Math.floor(width / 3)}`,
-    x2: `${url}?w=${Math.floor(width / 2)}`,
+    x2: `${url}?w=${Math.floor((width / 3) * 2)}`,
     x3: url
   };
 };
