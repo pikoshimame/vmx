@@ -17,10 +17,11 @@ const nuxt = new Nuxt({
  * @return {Promise}
  */
 function handleRequest(req, res) {
-  res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
-  return new Promise((resolve) => {
-    nuxt.render(req, res);
-    resolve();
+  res.set('Cache-Control', 'public, max-age=10, s-maxage=10');
+  return new Promise((resolve, reject) => {
+    nuxt.render(req, res, (promise) => {
+      promise.then(resolve).catch(reject);
+    });
   });
 }
 
