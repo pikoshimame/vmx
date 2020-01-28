@@ -11,19 +11,10 @@ const nuxt = new Nuxt({
   }
 });
 
-/**
- * @param {Object} req
- * @param {Object} res
- * @return {Promise}
- */
-function handleRequest(req, res) {
+app.use(async (req, res) => {
   res.set('Cache-Control', 'public, max-age=10, s-maxage=10');
-  return new Promise((resolve, reject) => {
-    nuxt.render(req, res, (promise) => {
-      promise.then(resolve).catch(reject);
-    });
-  });
-}
+  await nuxt.ready();
+  nuxt.render(req, res);
+});
 
-app.use(handleRequest);
 exports.app = functions.https.onRequest(app);
